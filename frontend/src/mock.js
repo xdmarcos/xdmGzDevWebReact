@@ -4,9 +4,6 @@ export const personalInfo = {
   name: "xdmGzDev",
   title: "Senior iOS Engineer",
   description: "Crafting exceptional mobile experiences with cutting-edge technology. Specializing in iOS native development.",
-  email: "xdmgzdev@gmail.com",
-  github: "github.com/xdmgzdev",
-  linkedin: "linkedin.com/in/xdmgzdev",
   aboutContent: "Passionate iOS engineer with extensive experience creating innovative mobile applications that delight users and drive business success. I specialize in building high-performance iOS apps using Swift, SwiftUI, and modern architectural patterns. With a keen eye for design and user experience, I create apps that not only function flawlessly but also provide intuitive and engaging interfaces. I'm committed to clean code, scalable architecture, and delivering pixel-perfect implementations.",
   aboutContentEs: "Ingeniero iOS apasionado con amplia experiencia creando aplicaciones móviles innovadoras que deleitan a los usuarios y impulsan el éxito empresarial. Me especializo en construir aplicaciones iOS de alto rendimiento usando Swift, SwiftUI y patrones arquitectónicos modernos. Con un ojo agudo para el diseño y la experiencia del usuario, creo aplicaciones que no solo funcionan perfectamente, sino que también proporcionan interfaces intuitivas y atractivas. Estoy comprometido con código limpio, arquitectura escalable y entrega de implementaciones perfectas.",
   cloudTags: ["15+ Years", "Swift Expert", "iOS Native", "SwiftUI", "Published Apps", "App Store"],
@@ -31,17 +28,23 @@ export const personalInfo = {
       title: "Code Quality",
       description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
     }
-  ],
-  contactTitle: "Let's Work Together",
-  contactSubtitle: "Ready to bring your iOS app idea to life? Let's discuss your project and create something amazing together.",
-  contactServices: [
+  ]
+};
+
+export const contactInfo = {
+  title: "Let's Work Together",
+  subtitle: "Ready to bring your iOS app idea to life? Let's discuss your project and create something amazing together.",
+  services: [
     "iOS app development (Swift/SwiftUI)",
     "App architecture & optimization",
     "UI/UX implementation",
     "App Store optimization",
     "Technical consulting"
   ],
-  formEndpoint: "" // Will be configured for deployment
+  formEndpoint: "", // Will be configured for deployment
+  email: "xdmgzdev@gmail.com",
+  github: "github.com/xdmgzdev",
+  linkedin: "linkedin.com/in/xdmgzdev"
 };
 
 export const skills = [
