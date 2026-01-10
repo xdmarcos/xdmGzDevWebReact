@@ -97,7 +97,7 @@ const Portfolio = () => {
         isScrolled={isScrolled}
         translations={t}
       />
-      <Hero translations={t} personalInfo={personalInfo} />
+      <Hero translations={t} personalInfo={personalInfo} language={language} />
       <About translations={t} personalInfo={personalInfo} language={language} />
       <Skills translations={t} skills={skills} language={language} />
       <Projects translations={t} projects={projects} language={language} />

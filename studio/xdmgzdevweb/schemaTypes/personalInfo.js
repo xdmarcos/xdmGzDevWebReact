@@ -11,15 +11,25 @@ export default {
     },
     {
       name: 'title',
-      title: 'Professional Title',
+      title: 'Professional Title (English)',
       type: 'string',
       validation: Rule => Rule.required(),
     },
     {
+      name: 'titleEs',
+      title: 'Professional Title (Spanish)',
+      type: 'string',
+    },
+    {
       name: 'description',
-      title: 'Description',
+      title: 'Hero Description (English)',
       type: 'text',
       validation: Rule => Rule.required(),
+    },
+    {
+      name: 'descriptionEs',
+      title: 'Hero Description (Spanish)',
+      type: 'text',
     },
     {
       name: 'aboutContent',

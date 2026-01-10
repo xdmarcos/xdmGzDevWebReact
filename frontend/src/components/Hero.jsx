@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from './ui/button';
 
-const Hero = ({ translations, personalInfo }) => {
+const Hero = ({ translations, personalInfo, language }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -15,6 +15,10 @@ const Hero = ({ translations, personalInfo }) => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Get translated content based on language
+  const title = language === 'es' && personalInfo.titleEs ? personalInfo.titleEs : personalInfo.title;
+  const description = language === 'es' && personalInfo.descriptionEs ? personalInfo.descriptionEs : personalInfo.description;
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden">
@@ -44,12 +48,12 @@ const Hero = ({ translations, personalInfo }) => {
 
           {/* Title */}
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-200 mb-6">
-            {personalInfo.title}
+            {title}
           </h2>
 
           {/* Description */}
           <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-            {personalInfo.description}
+            {description}
           </p>
 
           {/* CTA Buttons */}
