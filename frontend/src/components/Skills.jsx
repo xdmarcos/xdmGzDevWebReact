@@ -92,9 +92,9 @@ const Skills = ({ translations, skills, language }) => {
                       <h3 className="text-slate-100 font-bold text-xl mb-1 group-hover:text-cyan-400 transition-colors">
                         {skill.name}
                       </h3>
-                      {skill.description && (
+                      {description && (
                         <p className="text-slate-500 text-sm">
-                          {skill.description}
+                          {description}
                         </p>
                       )}
                     </div>
