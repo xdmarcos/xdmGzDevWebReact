@@ -91,7 +91,10 @@ const About = ({ translations, personalInfo, language }) => {
           {/* Highlight Cards */}
           <div className="space-y-4">
             {highlights.map((item, index) => {
-              const Icon = iconMap[item.icon] || Code2; // Fallback to Code2 if icon not found
+              const Icon = iconMap[item.icon] || Code2;
+              const title = language === 'es' && item.titleEs ? item.titleEs : item.title;
+              const description = language === 'es' && item.descriptionEs ? item.descriptionEs : item.description;
+              
               return (
                 <Card
                   key={index}
@@ -105,10 +108,10 @@ const About = ({ translations, personalInfo, language }) => {
                     </div>
                     <div>
                       <h3 className="text-slate-100 font-semibold text-lg mb-1">
-                        {item.title}
+                        {title}
                       </h3>
                       <p className="text-slate-400 text-sm">
-                        {item.description}
+                        {description}
                       </p>
                     </div>
                   </CardContent>
