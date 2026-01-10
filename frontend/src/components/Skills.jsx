@@ -74,6 +74,7 @@ const Skills = ({ translations, skills, language }) => {
             const level = getExperienceLevel(skill.years);
             const levelBadge = getLevelBadge(skill.years);
             const gradientColor = getLevelColor(level);
+            const description = language === 'es' && skill.descriptionEs ? skill.descriptionEs : skill.description;
 
             return (
               <Card
