@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Badge } from './ui/badge';
 import { ExternalLink, Code } from 'lucide-react';
 
-const Projects = ({ translations, projects }) => {
+const Projects = ({ translations, projects, language }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
