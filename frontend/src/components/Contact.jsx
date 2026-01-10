@@ -252,7 +252,7 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
         {/* Footer */}
         <footer className="mt-20 pt-8 border-t border-slate-800 text-center">
           <p className="text-slate-500">
-            © {new Date().getFullYear()} {personalInfo.name}. Built with React & SwiftUI inspiration.
+            © {new Date().getFullYear()} {personalInfo?.name || 'xdmGzDev'}. Built with React & SwiftUI inspiration.
           </p>
         </footer>
       </div>
