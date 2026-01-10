@@ -16,9 +16,18 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Get contact data from contactInfo or use defaults
-  const contactTitle = contactInfo?.title || translations.contact.title;
-  const contactSubtitle = contactInfo?.subtitle || translations.contact.subtitle;
-  const contactServices = contactInfo?.services || translations.contact.services;
+  const contactTitle = language === 'es' && contactInfo?.titleEs 
+    ? contactInfo.titleEs 
+    : (contactInfo?.title || translations.contact.title);
+  
+  const contactSubtitle = language === 'es' && contactInfo?.subtitleEs 
+    ? contactInfo.subtitleEs 
+    : (contactInfo?.subtitle || translations.contact.subtitle);
+  
+  const contactServices = language === 'es' && contactInfo?.servicesEs 
+    ? contactInfo.servicesEs 
+    : (contactInfo?.services || translations.contact.services);
+  
   const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
   const contactEmail = contactInfo?.email || personalInfo?.email;
   const contactGithub = contactInfo?.github || personalInfo?.github;
