@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from './ui/button';
-import { personalInfo } from '../mock';
 
 const Hero = ({ translations, personalInfo }) => {
   const [isVisible, setIsVisible] = useState(false);
