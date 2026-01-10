@@ -1,0 +1,10 @@
+{
+  "name": "studio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@sanity/vision": "^5.2.0",
+    "sanity": "^5.2.0"
+  }
+}
