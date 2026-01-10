@@ -14,7 +14,8 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0] {
 export const skillsQuery = `*[_type == "skill"] | order(order asc) {
   _id,
   name,
-  level,
+  years,
+  description,
   category,
   order
 }`
