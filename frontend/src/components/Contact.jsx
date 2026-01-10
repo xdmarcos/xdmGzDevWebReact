@@ -6,7 +6,7 @@ import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
-const Contact = ({ translations, personalInfo }) => {
+const Contact = ({ translations, contactInfo, personalInfo }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -15,11 +15,14 @@ const Contact = ({ translations, personalInfo }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Get contact data from personalInfo or use defaults
-  const contactTitle = personalInfo?.contactTitle || translations.contact.title;
-  const contactSubtitle = personalInfo?.contactSubtitle || translations.contact.subtitle;
-  const contactServices = personalInfo?.contactServices || translations.contact.services;
-  const formEndpoint = personalInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+  // Get contact data from contactInfo or use defaults
+  const contactTitle = contactInfo?.title || translations.contact.title;
+  const contactSubtitle = contactInfo?.subtitle || translations.contact.subtitle;
+  const contactServices = contactInfo?.services || translations.contact.services;
+  const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+  const contactEmail = contactInfo?.email || personalInfo?.email;
+  const contactGithub = contactInfo?.github || personalInfo?.github;
+  const contactLinkedin = contactInfo?.linkedin || personalInfo?.linkedin;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
