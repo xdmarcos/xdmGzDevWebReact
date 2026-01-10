@@ -66,21 +66,21 @@ export const contactInfo = {
 };
 
 export const skills = [
-  { name: "Swift", years: "10+", category: "Languages", description: "Core iOS language" },
-  { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI" },
-  { name: "UIKit", years: "10+", category: "Frameworks", description: "Traditional iOS UI framework" },
-  { name: "Combine", years: "3+", category: "Frameworks", description: "Reactive programming" },
-  { name: "Core Data", years: "5+", category: "Data", description: "Local data persistence" },
-  { name: "CloudKit", years: "2+", category: "Cloud", description: "Apple cloud services" },
-  { name: "Firebase", years: "8+", category: "Backend", description: "Backend as a service" },
-  { name: "REST APIs", years: "15+", category: "Integration", description: "RESTful services" },
-  { name: "GraphQL", years: "2+", category: "Integration", description: "Modern API queries" },
-  { name: "Xcode", years: "15+", category: "Tools", description: "Apple IDE" },
-  { name: "Git", years: "14+", category: "Tools", description: "Version control" },
-  { name: "Fastlane", years: "8+", category: "CI/CD", description: "iOS automation" },
-  { name: "TestFlight", years: "12+", category: "Distribution", description: "Beta testing platform" },
-  { name: "MVVM", years: "5+", category: "Architecture", description: "Design pattern" },
-  { name: "Clean Architecture", years: "12+", category: "Architecture", description: "Scalable app structure" }
+  { name: "Swift", years: "10+", category: "Languages", description: "Core iOS language", descriptionEs: "Lenguaje principal de iOS", order: 1 },
+  { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI", descriptionEs: "UI declarativa moderna", order: 2 },
+  { name: "UIKit", years: "10+", category: "Frameworks", description: "Traditional iOS UI framework", descriptionEs: "Framework UI tradicional de iOS", order: 3 },
+  { name: "Combine", years: "3+", category: "Frameworks", description: "Reactive programming", descriptionEs: "Programación reactiva", order: 4 },
+  { name: "Core Data", years: "5+", category: "Data", description: "Local data persistence", descriptionEs: "Persistencia de datos local", order: 5 },
+  { name: "CloudKit", years: "2+", category: "Cloud", description: "Apple cloud services", descriptionEs: "Servicios en la nube de Apple", order: 6 },
+  { name: "Firebase", years: "8+", category: "Backend", description: "Backend as a service", descriptionEs: "Backend como servicio", order: 7 },
+  { name: "REST APIs", years: "15+", category: "Integration", description: "RESTful services", descriptionEs: "Servicios RESTful", order: 8 },
+  { name: "GraphQL", years: "2+", category: "Integration", description: "Modern API queries", descriptionEs: "Consultas API modernas", order: 9 },
+  { name: "Xcode", years: "15+", category: "Tools", description: "Apple IDE", descriptionEs: "IDE de Apple", order: 10 },
+  { name: "Git", years: "14+", category: "Tools", description: "Version control", descriptionEs: "Control de versiones", order: 11 },
+  { name: "Fastlane", years: "8+", category: "CI/CD", description: "iOS automation", descriptionEs: "Automatización iOS", order: 12 },
+  { name: "TestFlight", years: "12+", category: "Distribution", description: "Beta testing platform", descriptionEs: "Plataforma de pruebas beta", order: 13 },
+  { name: "MVVM", years: "5+", category: "Architecture", description: "Design pattern", descriptionEs: "Patrón de diseño", order: 14 },
+  { name: "Clean Architecture", years: "12+", category: "Architecture", description: "Scalable app structure", descriptionEs: "Estructura de app escalable", order: 15 }
 ];
 
 export const projects = [
