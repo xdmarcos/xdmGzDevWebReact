@@ -7,39 +7,57 @@ export const personalInfo = {
   aboutContent: "Passionate iOS engineer with extensive experience creating innovative mobile applications that delight users and drive business success. I specialize in building high-performance iOS apps using Swift, SwiftUI, and modern architectural patterns. With a keen eye for design and user experience, I create apps that not only function flawlessly but also provide intuitive and engaging interfaces. I'm committed to clean code, scalable architecture, and delivering pixel-perfect implementations.",
   aboutContentEs: "Ingeniero iOS apasionado con amplia experiencia creando aplicaciones móviles innovadoras que deleitan a los usuarios y impulsan el éxito empresarial. Me especializo en construir aplicaciones iOS de alto rendimiento usando Swift, SwiftUI y patrones arquitectónicos modernos. Con un ojo agudo para el diseño y la experiencia del usuario, creo aplicaciones que no solo funcionan perfectamente, sino que también proporcionan interfaces intuitivas y atractivas. Estoy comprometido con código limpio, arquitectura escalable y entrega de implementaciones perfectas.",
   cloudTags: ["15+ Years", "Swift Expert", "iOS Native", "SwiftUI", "Published Apps", "App Store"],
+  cloudTagsEs: ["15+ Años", "Experto en Swift", "iOS Nativo", "SwiftUI", "Apps Publicadas", "App Store"],
   highlights: [
     {
       icon: "Code2",
       title: "Clean Code",
-      description: "Writing maintainable, testable, and scalable code"
+      titleEs: "Código Limpio",
+      description: "Writing maintainable, testable, and scalable code",
+      descriptionEs: "Escribiendo código mantenible, testeable y escalable"
     },
     {
       icon: "Smartphone",
       title: "Native iOS",
-      description: "Deep expertise in Swift and iOS frameworks"
+      titleEs: "iOS Nativo",
+      description: "Deep expertise in Swift and iOS frameworks",
+      descriptionEs: "Experiencia profunda en Swift y frameworks de iOS"
     },
     {
       icon: "Layers",
       title: "Architecture",
-      description: "MVVM, Clean Architecture, and design patterns"
+      titleEs: "Arquitectura",
+      description: "MVVM, Clean Architecture, and design patterns",
+      descriptionEs: "MVVM, Arquitectura Limpia y patrones de diseño"
     },
     {
       icon: "CheckCircle2",
       title: "Code Quality",
-      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
+      titleEs: "Calidad de Código",
+      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more",
+      descriptionEs: "Pruebas Unitarias, Pruebas de UI, Pruebas de Captura, Pruebas de Integración y más"
     }
   ]
 };
 
 export const contactInfo = {
   title: "Let's Work Together",
+  titleEs: "Trabajemos Juntos",
   subtitle: "Ready to bring your iOS app idea to life? Let's discuss your project and create something amazing together.",
+  subtitleEs: "¿Listo para dar vida a tu idea de app iOS? Hablemos sobre tu proyecto y creemos algo increíble juntos.",
   services: [
     "iOS app development (Swift/SwiftUI)",
     "App architecture & optimization",
     "UI/UX implementation",
     "App Store optimization",
     "Technical consulting"
+  ],
+  servicesEs: [
+    "Desarrollo de apps iOS (Swift/SwiftUI)",
+    "Arquitectura y optimización de apps",
+    "Implementación de UI/UX",
+    "Optimización para App Store",
+    "Consultoría técnica"
   ],
   formEndpoint: "", // Will be configured for deployment
   email: "xdmgzdev@gmail.com",
