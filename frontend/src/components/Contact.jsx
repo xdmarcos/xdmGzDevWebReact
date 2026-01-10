@@ -194,7 +194,34 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
           {/* Contact Form */}
           <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm">
             <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Hidden iframe for form submission */}
+              <iframe name="web3forms-iframe" id="web3forms-iframe" style={{ display: 'none' }} title="form-target"></iframe>
+              
+              <form 
+                action="https://api.web3forms.com/submit" 
+                method="POST"
+                target="web3forms-iframe"
+                onSubmit={(e) => {
+                  setIsSubmitting(true);
+                  // Show success message after a short delay
+                  setTimeout(() => {
+                    toast({
+                      title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
+                      description: language === 'es' 
+                        ? "Gracias por contactarme. Te responderé pronto."
+                        : "Thank you for reaching out. I'll get back to you soon.",
+                    });
+                    setFormData({ name: '', email: '', message: '' });
+                    setIsSubmitting(false);
+                  }, 1500);
+                }}
+                className="space-y-6"
+              >
+                {/* Web3Forms access key */}
+                <input type="hidden" name="access_key" value={web3formsKey || ''} />
+                <input type="hidden" name="subject" value="Portfolio Contact Form Submission" />
+                <input type="hidden" name="from_name" value="xdmGzDev Portfolio" />
+                
                 <div>
                   <label htmlFor="name" className="block text-slate-300 font-medium mb-2">
                     {translations.contact.form.name}
