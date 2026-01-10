@@ -31,7 +31,17 @@ export const personalInfo = {
       title: "Code Quality",
       description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
     }
-  ]
+  ],
+  contactTitle: "Let's Work Together",
+  contactSubtitle: "Ready to bring your iOS app idea to life? Let's discuss your project and create something amazing together.",
+  contactServices: [
+    "iOS app development (Swift/SwiftUI)",
+    "App architecture & optimization",
+    "UI/UX implementation",
+    "App Store optimization",
+    "Technical consulting"
+  ],
+  formEndpoint: "" // Will be configured for deployment
 };
 
 export const skills = [

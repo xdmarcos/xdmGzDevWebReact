@@ -10,7 +10,11 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0] {
   aboutContent,
   aboutContentEs,
   cloudTags,
-  highlights
+  highlights,
+  contactTitle,
+  contactSubtitle,
+  contactServices,
+  formEndpoint
 }`
 
 export const skillsQuery = `*[_type == "skill"] | order(order asc) {
