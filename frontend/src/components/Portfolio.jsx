@@ -5,11 +5,20 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 import Navigation from './Navigation';
-import { translations } from '../mock';
+import { translations, personalInfo as mockPersonalInfo, skills as mockSkills, projects as mockProjects } from '../mock';
+import { client, urlFor } from '../sanity/client';
+import { personalInfoQuery, skillsQuery, projectsQuery } from '../sanity/queries';
 
 const Portfolio = () => {
   const [language, setLanguage] = useState('en');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [useSanity] = useState(process.env.REACT_APP_USE_SANITY === 'true');
+  
+  // Data state
+  const [personalInfo, setPersonalInfo] = useState(mockPersonalInfo);
+  const [skills, setSkills] = useState(mockSkills);
+  const [projects, setProjects] = useState(mockProjects);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +28,58 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Fetch data from Sanity if enabled
+  useEffect(() => {
+    async function fetchSanityData() {
+      if (!useSanity) return;
+
+      try {
+        setLoading(true);
+        
+        const [personalData, skillsData, projectsData] = await Promise.all([
+          client.fetch(personalInfoQuery),
+          client.fetch(skillsQuery),
+          client.fetch(projectsQuery)
+        ]);
+
+        // Transform projects to include image URLs
+        const transformedProjects = projectsData.map((project, index) => ({
+          id: project._id || index + 1,
+          title: project.title,
+          description: project.description,
+          features: project.features,
+          technologies: project.technologies,
+          metrics: project.metrics,
+          image: project.image ? urlFor(project.image).width(800).quality(80).url() : null
+        }));
+
+        if (personalData) setPersonalInfo(personalData);
+        if (skillsData.length > 0) setSkills(skillsData);
+        if (transformedProjects.length > 0) setProjects(transformedProjects);
+        
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching Sanity data:', error);
+        console.log('Falling back to mock data');
+        setLoading(false);
+      }
+    }
+
+    fetchSanityData();
+  }, [useSanity]);
+
   const t = translations[language];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-slate-400 text-lg">Loading portfolio...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
@@ -29,11 +89,11 @@ const Portfolio = () => {
         isScrolled={isScrolled}
         translations={t}
       />
-      <Hero translations={t} />
-      <About translations={t} />
-      <Skills translations={t} />
-      <Projects translations={t} />
-      <Contact translations={t} />
+      <Hero translations={t} personalInfo={personalInfo} />
+      <About translations={t} personalInfo={personalInfo} language={language} />
+      <Skills translations={t} skills={skills} />
+      <Projects translations={t} projects={projects} />
+      <Contact translations={t} personalInfo={personalInfo} />
     </div>
   );
 };
