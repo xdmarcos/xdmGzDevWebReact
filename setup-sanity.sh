@@ -6,7 +6,7 @@ echo "=================================="
 echo ""
 
 echo "Step 1: Navigate to studio directory..."
-cd /app/studio
+cd ./studio
 
 echo ""
 echo "Step 2: Initialize Sanity project..."

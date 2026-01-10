@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'iOS Developer Portfolio',
+  title: 'xdmGzDevWeb',
 
   projectId: 'tj58vz34',
   dataset: 'production',
