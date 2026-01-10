@@ -4,10 +4,9 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2 } from 'lucide-react';
-import { personalInfo } from '../mock';
 import { useToast } from '../hooks/use-toast';
 
-const Contact = ({ translations }) => {
+const Contact = ({ translations, personalInfo }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
