@@ -5,9 +5,9 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 import Navigation from './Navigation';
-import { translations, personalInfo as mockPersonalInfo, skills as mockSkills, projects as mockProjects } from '../mock';
+import { translations, personalInfo as mockPersonalInfo, contactInfo as mockContactInfo, skills as mockSkills, projects as mockProjects } from '../mock';
 import { client, urlFor } from '../sanity/client';
-import { personalInfoQuery, skillsQuery, projectsQuery } from '../sanity/queries';
+import { personalInfoQuery, contactInfoQuery, skillsQuery, projectsQuery } from '../sanity/queries';
 
 const Portfolio = () => {
   const [language, setLanguage] = useState('en');
@@ -17,6 +17,7 @@ const Portfolio = () => {
   
   // Data state
   const [personalInfo, setPersonalInfo] = useState(mockPersonalInfo);
+  const [contactInfo, setContactInfo] = useState(mockContactInfo);
   const [skills, setSkills] = useState(mockSkills);
   const [projects, setProjects] = useState(mockProjects);
 
@@ -40,8 +41,9 @@ const Portfolio = () => {
         setLoading(true);
         console.log('Fetching data from Sanity...');
         
-        const [personalData, skillsData, projectsData] = await Promise.all([
+        const [personalData, contactData, skillsData, projectsData] = await Promise.all([
           client.fetch(personalInfoQuery),
+          client.fetch(contactInfoQuery),
           client.fetch(skillsQuery),
           client.fetch(projectsQuery)
         ]);
@@ -58,6 +60,7 @@ const Portfolio = () => {
         }));
 
         if (personalData) setPersonalInfo(personalData);
+        if (contactData) setContactInfo(contactData);
         if (skillsData.length > 0) setSkills(skillsData);
         if (transformedProjects.length > 0) setProjects(transformedProjects);
         
@@ -98,7 +101,7 @@ const Portfolio = () => {
       <About translations={t} personalInfo={personalInfo} language={language} />
       <Skills translations={t} skills={skills} />
       <Projects translations={t} projects={projects} />
-      <Contact translations={t} personalInfo={personalInfo} />
+      <Contact translations={t} contactInfo={contactInfo} personalInfo={personalInfo} />
     </div>
   );
 };
