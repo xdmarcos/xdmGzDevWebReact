@@ -35,8 +35,12 @@ Build a modern, responsive portfolio website for a Senior iOS Engineer, "xdmGzDe
 - [x] Language toggle (EN/ES) in navigation
 - [x] Sanity.io schema setup for all content types
 - [x] **Full bilingual support for ALL sections** (Jan 2026)
-  - Navigation, About, Skills, Projects, Contact all translate correctly
-  - Mock data includes Spanish translations for all content
+  - Hero: title, description
+  - About: content, highlights (title + description), cloudTags
+  - Skills: all descriptions
+  - Projects: descriptions, features, metrics
+  - Contact: all form labels & services
+  - Mock data and Sanity schemas both updated with Spanish fields
 
 ### File Structure
 ```
