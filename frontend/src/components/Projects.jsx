@@ -22,11 +22,16 @@ const Projects = ({ translations, projects, language }) => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const description = language === 'es' && project.descriptionEs ? project.descriptionEs : project.description;
+            const features = language === 'es' && project.featuresEs ? project.featuresEs : project.features;
+            const metrics = language === 'es' && project.metricsEs ? project.metricsEs : project.metrics;
+            
+            return (
             <Card
               key={project.id}
               className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer overflow-hidden group"
-              onClick={() => setSelectedProject(project)}
+              onClick={() => setSelectedProject({...project, description, features, metrics})}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
