@@ -6,7 +6,7 @@ import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
-const Contact = ({ translations, contactInfo, personalInfo }) => {
+const Contact = ({ translations, contactInfo, personalInfo, language }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
