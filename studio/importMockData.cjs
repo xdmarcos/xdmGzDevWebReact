@@ -388,6 +388,7 @@ const projects = [
     technologies: ["Swift", "AVFoundation", "Core Data", "Realm", "URLSession", "Charts"],
     metrics: "Used by 300+ schools worldwide",
     metricsEs: "Utilizada por más de 300 escuelas en todo el mundo",
+    projectUrl: "https://apps.apple.com/co/app/learnhub-academy",
     order: 4,
     featured: true
   },
@@ -413,6 +414,7 @@ const projects = [
     technologies: ["Swift", "MapKit", "Core Location", "PhotoKit", "SwiftUI", "Combine"],
     metrics: "4.8★ rating, 600K downloads",
     metricsEs: "4.8★ de calificación, 600K descargas",
+    projectUrl: "https://apps.apple.com/co/app/travelmate-navigator",
     order: 5,
     featured: true
   },
@@ -438,6 +440,7 @@ const projects = [
     technologies: ["Swift", "AVFoundation", "UserNotifications", "WidgetKit", "SwiftUI", "CloudKit"],
     metrics: "Featured in App Store, 4.9★ rating",
     metricsEs: "Destacada en App Store, 4.9★ de calificación",
+    projectUrl: "https://apps.apple.com/co/app/mindfulspace",
     order: 6,
     featured: true
   }
