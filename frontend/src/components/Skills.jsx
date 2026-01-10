@@ -148,7 +148,7 @@ const Skills = ({ translations, skills }) => {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-slate-500" />
-              <span className="text-slate-400 text-sm"><strong>Learning:</strong> 1-2 years</span>
+              <span className="text-slate-400 text-sm"><strong>Familiar:</strong> 1-2 years</span>
             </div>
           </div>
         </div>
