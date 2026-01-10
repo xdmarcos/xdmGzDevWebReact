@@ -99,9 +99,9 @@ const Portfolio = () => {
       />
       <Hero translations={t} personalInfo={personalInfo} />
       <About translations={t} personalInfo={personalInfo} language={language} />
-      <Skills translations={t} skills={skills} />
-      <Projects translations={t} projects={projects} />
-      <Contact translations={t} contactInfo={contactInfo} personalInfo={personalInfo} />
+      <Skills translations={t} skills={skills} language={language} />
+      <Projects translations={t} projects={projects} language={language} />
+      <Contact translations={t} contactInfo={contactInfo} personalInfo={personalInfo} language={language} />
     </div>
   );
 };

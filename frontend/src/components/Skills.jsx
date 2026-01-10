@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Clock, Award } from 'lucide-react';
 
-const Skills = ({ translations, skills }) => {
+const Skills = ({ translations, skills, language }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', ...new Set(skills.map(skill => skill.category))];
@@ -74,6 +74,7 @@ const Skills = ({ translations, skills }) => {
             const level = getExperienceLevel(skill.years);
             const levelBadge = getLevelBadge(skill.years);
             const gradientColor = getLevelColor(level);
+            const description = language === 'es' && skill.descriptionEs ? skill.descriptionEs : skill.description;
 
             return (
               <Card
@@ -91,9 +92,9 @@ const Skills = ({ translations, skills }) => {
                       <h3 className="text-slate-100 font-bold text-xl mb-1 group-hover:text-cyan-400 transition-colors">
                         {skill.name}
                       </h3>
-                      {skill.description && (
+                      {description && (
                         <p className="text-slate-500 text-sm">
-                          {skill.description}
+                          {description}
                         </p>
                       )}
                     </div>

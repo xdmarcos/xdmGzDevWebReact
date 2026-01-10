@@ -23,7 +23,7 @@ export default {
     },
     {
       name: 'aboutContent',
-      title: 'About Me Content',
+      title: 'About Me Content (English)',
       type: 'text',
       validation: Rule => Rule.required(),
     },
@@ -34,10 +34,17 @@ export default {
     },
     {
       name: 'cloudTags',
-      title: 'Cloud Tags/Badges',
+      title: 'Cloud Tags/Badges (English)',
       type: 'array',
       of: [{type: 'string'}],
       description: 'Tags displayed below about content (e.g., "10+ Years", "Swift Expert")',
+    },
+    {
+      name: 'cloudTagsEs',
+      title: 'Cloud Tags/Badges (Spanish)',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Spanish version of cloud tags',
     },
     {
       name: 'highlights',
@@ -49,15 +56,25 @@ export default {
           fields: [
             {
               name: 'title',
-              title: 'Highlight Title',
+              title: 'Highlight Title (English)',
               type: 'string',
               validation: Rule => Rule.required(),
             },
             {
+              name: 'titleEs',
+              title: 'Highlight Title (Spanish)',
+              type: 'string',
+            },
+            {
               name: 'description',
-              title: 'Description',
+              title: 'Description (English)',
               type: 'string',
               validation: Rule => Rule.required(),
+            },
+            {
+              name: 'descriptionEs',
+              title: 'Description (Spanish)',
+              type: 'string',
             },
             {
               name: 'icon',

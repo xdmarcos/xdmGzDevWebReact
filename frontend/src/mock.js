@@ -7,33 +7,44 @@ export const personalInfo = {
   aboutContent: "Passionate iOS engineer with extensive experience creating innovative mobile applications that delight users and drive business success. I specialize in building high-performance iOS apps using Swift, SwiftUI, and modern architectural patterns. With a keen eye for design and user experience, I create apps that not only function flawlessly but also provide intuitive and engaging interfaces. I'm committed to clean code, scalable architecture, and delivering pixel-perfect implementations.",
   aboutContentEs: "Ingeniero iOS apasionado con amplia experiencia creando aplicaciones móviles innovadoras que deleitan a los usuarios y impulsan el éxito empresarial. Me especializo en construir aplicaciones iOS de alto rendimiento usando Swift, SwiftUI y patrones arquitectónicos modernos. Con un ojo agudo para el diseño y la experiencia del usuario, creo aplicaciones que no solo funcionan perfectamente, sino que también proporcionan interfaces intuitivas y atractivas. Estoy comprometido con código limpio, arquitectura escalable y entrega de implementaciones perfectas.",
   cloudTags: ["15+ Years", "Swift Expert", "iOS Native", "SwiftUI", "Published Apps", "App Store"],
+  cloudTagsEs: ["15+ Años", "Experto en Swift", "iOS Nativo", "SwiftUI", "Apps Publicadas", "App Store"],
   highlights: [
     {
       icon: "Code2",
       title: "Clean Code",
-      description: "Writing maintainable, testable, and scalable code"
+      titleEs: "Código Limpio",
+      description: "Writing maintainable, testable, and scalable code",
+      descriptionEs: "Escribiendo código mantenible, testeable y escalable"
     },
     {
       icon: "Smartphone",
       title: "Native iOS",
-      description: "Deep expertise in Swift and iOS frameworks"
+      titleEs: "iOS Nativo",
+      description: "Deep expertise in Swift and iOS frameworks",
+      descriptionEs: "Experiencia profunda en Swift y frameworks de iOS"
     },
     {
       icon: "Layers",
       title: "Architecture",
-      description: "MVVM, Clean Architecture, and design patterns"
+      titleEs: "Arquitectura",
+      description: "MVVM, Clean Architecture, and design patterns",
+      descriptionEs: "MVVM, Arquitectura Limpia y patrones de diseño"
     },
     {
       icon: "CheckCircle2",
       title: "Code Quality",
-      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
+      titleEs: "Calidad de Código",
+      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more",
+      descriptionEs: "Pruebas Unitarias, Pruebas de UI, Pruebas de Captura, Pruebas de Integración y más"
     }
   ]
 };
 
 export const contactInfo = {
   title: "Let's Work Together",
+  titleEs: "Trabajemos Juntos",
   subtitle: "Ready to bring your iOS app idea to life? Let's discuss your project and create something amazing together.",
+  subtitleEs: "¿Listo para dar vida a tu idea de app iOS? Hablemos sobre tu proyecto y creemos algo increíble juntos.",
   services: [
     "iOS app development (Swift/SwiftUI)",
     "App architecture & optimization",
@@ -41,28 +52,35 @@ export const contactInfo = {
     "App Store optimization",
     "Technical consulting"
   ],
-  formEndpoint: "https://api.web3forms.com/submit",
+  servicesEs: [
+    "Desarrollo de apps iOS (Swift/SwiftUI)",
+    "Arquitectura y optimización de apps",
+    "Implementación de UI/UX",
+    "Optimización para App Store",
+    "Consultoría técnica"
+  ],
+  formEndpoint: "", // Will be configured for deployment
   email: "xdmgzdev@gmail.com",
   github: "github.com/xdmgzdev",
   linkedin: "linkedin.com/in/xdmgzdev"
 };
 
 export const skills = [
-  { name: "Swift", years: "10+", category: "Languages", description: "Core iOS language" },
-  { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI" },
-  { name: "UIKit", years: "10+", category: "Frameworks", description: "Traditional iOS UI framework" },
-  { name: "Combine", years: "3+", category: "Frameworks", description: "Reactive programming" },
-  { name: "Core Data", years: "5+", category: "Data", description: "Local data persistence" },
-  { name: "CloudKit", years: "2+", category: "Cloud", description: "Apple cloud services" },
-  { name: "Firebase", years: "8+", category: "Backend", description: "Backend as a service" },
-  { name: "REST APIs", years: "15+", category: "Integration", description: "RESTful services" },
-  { name: "GraphQL", years: "2+", category: "Integration", description: "Modern API queries" },
-  { name: "Xcode", years: "15+", category: "Tools", description: "Apple IDE" },
-  { name: "Git", years: "14+", category: "Tools", description: "Version control" },
-  { name: "Fastlane", years: "8+", category: "CI/CD", description: "iOS automation" },
-  { name: "TestFlight", years: "12+", category: "Distribution", description: "Beta testing platform" },
-  { name: "MVVM", years: "5+", category: "Architecture", description: "Design pattern" },
-  { name: "Clean Architecture", years: "12+", category: "Architecture", description: "Scalable app structure" }
+  { name: "Swift", years: "10+", category: "Languages", description: "Core iOS language", descriptionEs: "Lenguaje principal de iOS", order: 1 },
+  { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI", descriptionEs: "UI declarativa moderna", order: 2 },
+  { name: "UIKit", years: "10+", category: "Frameworks", description: "Traditional iOS UI framework", descriptionEs: "Framework UI tradicional de iOS", order: 3 },
+  { name: "Combine", years: "3+", category: "Frameworks", description: "Reactive programming", descriptionEs: "Programación reactiva", order: 4 },
+  { name: "Core Data", years: "5+", category: "Data", description: "Local data persistence", descriptionEs: "Persistencia de datos local", order: 5 },
+  { name: "CloudKit", years: "2+", category: "Cloud", description: "Apple cloud services", descriptionEs: "Servicios en la nube de Apple", order: 6 },
+  { name: "Firebase", years: "8+", category: "Backend", description: "Backend as a service", descriptionEs: "Backend como servicio", order: 7 },
+  { name: "REST APIs", years: "15+", category: "Integration", description: "RESTful services", descriptionEs: "Servicios RESTful", order: 8 },
+  { name: "GraphQL", years: "2+", category: "Integration", description: "Modern API queries", descriptionEs: "Consultas API modernas", order: 9 },
+  { name: "Xcode", years: "15+", category: "Tools", description: "Apple IDE", descriptionEs: "IDE de Apple", order: 10 },
+  { name: "Git", years: "14+", category: "Tools", description: "Version control", descriptionEs: "Control de versiones", order: 11 },
+  { name: "Fastlane", years: "8+", category: "CI/CD", description: "iOS automation", descriptionEs: "Automatización iOS", order: 12 },
+  { name: "TestFlight", years: "12+", category: "Distribution", description: "Beta testing platform", descriptionEs: "Plataforma de pruebas beta", order: 13 },
+  { name: "MVVM", years: "5+", category: "Architecture", description: "Design pattern", descriptionEs: "Patrón de diseño", order: 14 },
+  { name: "Clean Architecture", years: "12+", category: "Architecture", description: "Scalable app structure", descriptionEs: "Estructura de app escalable", order: 15 }
 ];
 
 export const projects = [

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Badge } from './ui/badge';
 import { ExternalLink, Code } from 'lucide-react';
 
-const Projects = ({ translations, projects }) => {
+const Projects = ({ translations, projects, language }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
@@ -22,12 +22,17 @@ const Projects = ({ translations, projects }) => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={project.id}
-              className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer overflow-hidden group"
-              onClick={() => setSelectedProject(project)}
-            >
+          {projects.map((project, index) => {
+            const description = language === 'es' && project.descriptionEs ? project.descriptionEs : project.description;
+            const features = language === 'es' && project.featuresEs ? project.featuresEs : project.features;
+            const metrics = language === 'es' && project.metricsEs ? project.metricsEs : project.metrics;
+            
+            return (
+              <Card
+                key={project.id}
+                className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer overflow-hidden group"
+                onClick={() => setSelectedProject({...project, description, features, metrics})}
+              >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -46,7 +51,7 @@ const Projects = ({ translations, projects }) => {
               <CardContent className="p-6 space-y-4">
                 {/* Description */}
                 <p className="text-slate-400 text-sm line-clamp-3">
-                  {project.description}
+                  {description}
                 </p>
 
                 {/* Technologies */}
@@ -73,11 +78,12 @@ const Projects = ({ translations, projects }) => {
                 {/* Metrics */}
                 <div className="flex items-center text-cyan-400 text-sm font-medium pt-2">
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  {project.metrics}
+                  {metrics}
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Project Modal/Expanded View */}

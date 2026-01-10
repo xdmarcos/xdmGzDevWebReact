@@ -5,25 +5,44 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Section Title',
+      title: 'Section Title (English)',
       type: 'string',
       description: 'e.g., "Let\'s Work Together"',
       validation: Rule => Rule.required(),
     },
     {
+      name: 'titleEs',
+      title: 'Section Title (Spanish)',
+      type: 'string',
+      description: 'e.g., "Trabajemos Juntos"',
+    },
+    {
       name: 'subtitle',
-      title: 'Section Subtitle',
+      title: 'Section Subtitle (English)',
       type: 'text',
       description: 'Brief description below the title',
       validation: Rule => Rule.required(),
     },
     {
+      name: 'subtitleEs',
+      title: 'Section Subtitle (Spanish)',
+      type: 'text',
+      description: 'Spanish version of subtitle',
+    },
+    {
       name: 'services',
-      title: 'Services List',
+      title: 'Services List (English)',
       type: 'array',
       of: [{type: 'string'}],
       description: 'List of services you can help with',
       validation: Rule => Rule.required().min(3),
+    },
+    {
+      name: 'servicesEs',
+      title: 'Services List (Spanish)',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Spanish version of services',
     },
     {
       name: 'formEndpoint',
