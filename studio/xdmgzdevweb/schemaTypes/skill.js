@@ -18,9 +18,15 @@ export default {
     },
     {
       name: 'description',
-      title: 'Short Description',
+      title: 'Short Description (English)',
       type: 'string',
       description: 'Brief description of the skill',
+    },
+    {
+      name: 'descriptionEs',
+      title: 'Short Description (Spanish)',
+      type: 'string',
+      description: 'Spanish version of description',
     },
     {
       name: 'category',
