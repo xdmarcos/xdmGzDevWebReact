@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
-import { Code2, Smartphone, Layers } from 'lucide-react';
+import { Code2, Smartphone, Layers, CheckCircle2 } from 'lucide-react';
 
 const About = ({ translations, personalInfo, language }) => {
   const highlights = [
@@ -20,7 +20,7 @@ const About = ({ translations, personalInfo, language }) => {
       description: 'MVVM, Clean Architecture, and design patterns'
     },
     {
-      icon: Code2,
+      icon: CheckCircle2,
       title: 'Code Quality',
       description: 'Unit Testing, UI Test, Screenshot testing, Integration Tests and more'
     }
