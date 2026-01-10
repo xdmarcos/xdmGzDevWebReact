@@ -3,7 +3,7 @@ import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { Mail, Github, Linkedin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
 const Contact = ({ translations, personalInfo }) => {
@@ -15,19 +15,66 @@ const Contact = ({ translations, personalInfo }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Get contact data from personalInfo or use defaults
+  const contactTitle = personalInfo?.contactTitle || translations.contact.title;
+  const contactSubtitle = personalInfo?.contactSubtitle || translations.contact.subtitle;
+  const contactServices = personalInfo?.contactServices || translations.contact.services;
+  const formEndpoint = personalInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // If formEndpoint is configured, send to real endpoint
+      if (formEndpoint) {
+        const response = await fetch(formEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            to: personalInfo.email,
+            subject: `Portfolio Contact from ${formData.name}`,
+          }),
+        });
+
+        if (response.ok) {
+          toast({
+            title: "Message sent successfully!",
+            description: "Thank you for reaching out. I'll get back to you soon.",
+          });
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } else {
+        // Fallback: Simulate form submission for demo/development
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+        
+        // Log to console for development
+        console.log('Form submission (demo mode):', {
+          ...formData,
+          to: personalInfo.email
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Error sending message",
+        description: "Please try again or contact me directly at " + personalInfo.email,
+        variant: "destructive",
       });
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -67,10 +114,10 @@ const Contact = ({ translations, personalInfo }) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
-            {translations.contact.title}
+            {contactTitle}
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            {translations.contact.subtitle}
+            {contactSubtitle}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4" />
         </div>
@@ -111,7 +158,7 @@ const Contact = ({ translations, personalInfo }) => {
                   {translations.contact.help}
                 </h3>
                 <ul className="space-y-3">
-                  {translations.contact.services.map((service, idx) => (
+                  {contactServices.map((service, idx) => (
                     <li key={idx} className="flex items-start text-slate-300">
                       <CheckCircle2 className="w-5 h-5 text-cyan-400 mr-3 mt-0.5 flex-shrink-0" />
                       {service}
@@ -137,6 +184,7 @@ const Contact = ({ translations, personalInfo }) => {
                     required
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="bg-slate-900/50 border-slate-600 text-slate-100 focus:border-cyan-500 focus:ring-cyan-500/50"
                     placeholder="John Doe"
                   />
@@ -153,6 +201,7 @@ const Contact = ({ translations, personalInfo }) => {
                     required
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="bg-slate-900/50 border-slate-600 text-slate-100 focus:border-cyan-500 focus:ring-cyan-500/50"
                     placeholder="john@example.com"
                   />
@@ -168,6 +217,7 @@ const Contact = ({ translations, personalInfo }) => {
                     required
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     rows={6}
                     className="bg-slate-900/50 border-slate-600 text-slate-100 focus:border-cyan-500 focus:ring-cyan-500/50 resize-none"
                     placeholder="Tell me about your project..."
@@ -177,14 +227,11 @@ const Contact = ({ translations, personalInfo }) => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-6 text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-6 text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
-                      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
+                      <Loader2 className="w-5 h-5 mr-3 animate-spin" />
                       Sending...
                     </span>
                   ) : (
