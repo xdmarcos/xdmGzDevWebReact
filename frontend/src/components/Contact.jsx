@@ -65,7 +65,7 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
         // Log to console for development
         console.log('Form submission (demo mode):', {
           ...formData,
-          to: personalInfo.email
+          to: contactEmail
         });
       }
     } catch (error) {
