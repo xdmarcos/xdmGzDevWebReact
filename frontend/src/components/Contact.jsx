@@ -91,22 +91,22 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
     {
       icon: Mail,
       label: 'Email',
-      value: personalInfo.email,
-      href: `mailto:${personalInfo.email}`,
+      value: contactEmail,
+      href: `mailto:${contactEmail}`,
       color: 'text-cyan-400'
     },
     {
       icon: Github,
       label: 'GitHub',
-      value: personalInfo.github,
-      href: `https://${personalInfo.github}`,
+      value: contactGithub,
+      href: `https://${contactGithub}`,
       color: 'text-slate-300'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: personalInfo.linkedin,
-      href: `https://${personalInfo.linkedin}`,
+      value: contactLinkedin,
+      href: `https://${contactLinkedin}`,
       color: 'text-blue-400'
     }
   ];
