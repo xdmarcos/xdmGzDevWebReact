@@ -108,6 +108,7 @@ export const projects = [
     technologies: ["Swift", "SwiftUI", "Combine", "Core Data", "Firebase", "Charts API"],
     metrics: "1.5M+ downloads, 4.7★ App Store rating",
     metricsEs: "1.5M+ descargas, 4.7★ en App Store",
+    projectUrl: "https://apps.apple.com/co/app/financeflow-pro",
     image: "https://images.unsplash.com/photo-1762279389002-7b6abd7bd6c6?w=800&q=80"
   },
   {
@@ -132,6 +133,7 @@ export const projects = [
     technologies: ["Swift", "HealthKit", "WatchOS", "CloudKit", "Core Motion", "WidgetKit"],
     metrics: "Featured by Apple, 800K+ active users",
     metricsEs: "Destacada por Apple, 800K+ usuarios activos",
+    projectUrl: "https://apps.apple.com/co/app/healthtrack-elite",
     image: "https://images.unsplash.com/photo-1709634539435-f9fccaf0fda1?w=800&q=80"
   },
   {
@@ -156,6 +158,7 @@ export const projects = [
     technologies: ["Swift", "ARKit", "StoreKit", "Core ML", "Firebase", "Alamofire"],
     metrics: "50% increase in conversion rate",
     metricsEs: "50% de aumento en tasa de conversión",
+    projectUrl: "https://apps.apple.com/co/app/shopsphere",
     image: "https://images.unsplash.com/photo-1709626011485-6fe000ea2dbc?w=800&q=80"
   },
   {
@@ -180,6 +183,7 @@ export const projects = [
     technologies: ["Swift", "AVFoundation", "Core Data", "Realm", "URLSession", "Charts"],
     metrics: "Used by 300+ schools worldwide",
     metricsEs: "Utilizada por más de 300 escuelas en todo el mundo",
+    projectUrl: "https://apps.apple.com/co/app/learnhub-academy",
     image: "https://images.unsplash.com/photo-1762326866764-1ef1a008e0ad?w=800&q=80"
   },
   {
@@ -204,6 +208,7 @@ export const projects = [
     technologies: ["Swift", "MapKit", "Core Location", "PhotoKit", "SwiftUI", "Combine"],
     metrics: "4.8★ rating, 600K downloads",
     metricsEs: "4.8★ de calificación, 600K descargas",
+    projectUrl: "https://apps.apple.com/co/app/travelmate-navigator",
     image: "https://images.unsplash.com/photo-1748716460543-1916e86eebee?w=800&q=80"
   },
   {
@@ -228,6 +233,7 @@ export const projects = [
     technologies: ["Swift", "AVFoundation", "UserNotifications", "WidgetKit", "SwiftUI", "CloudKit"],
     metrics: "Featured in App Store, 4.9★ rating",
     metricsEs: "Destacada en App Store, 4.9★ de calificación",
+    projectUrl: "https://apps.apple.com/co/app/mindfulspace",
     image: "https://images.unsplash.com/photo-1759481269661-2eb42cc1d3db?w=800&q=80"
   }
 ];

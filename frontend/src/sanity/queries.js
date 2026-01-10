@@ -3,7 +3,9 @@
 export const personalInfoQuery = `*[_type == "personalInfo"][0] {
   name,
   title,
+  titleEs,
   description,
+  descriptionEs,
   aboutContent,
   aboutContentEs,
   cloudTags,
@@ -51,5 +53,6 @@ export const projectsQuery = `*[_type == "project" && featured == true] | order(
   technologies,
   metrics,
   metricsEs,
+  projectUrl,
   order
 }`
