@@ -18,6 +18,11 @@ const About = ({ translations, personalInfo, language }) => {
       icon: Layers,
       title: 'Architecture',
       description: 'MVVM, Clean Architecture, and design patterns'
+    },
+    {
+      icon: Code2,
+      title: 'Code Quality',
+      description: 'Unit Testing, UI Test, Screenshot testing, Integration Tests and more'
     }
   ];
 
