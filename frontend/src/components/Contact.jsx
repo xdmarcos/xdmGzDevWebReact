@@ -38,7 +38,7 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
           },
           body: JSON.stringify({
             ...formData,
-            to: personalInfo.email,
+            to: contactEmail,
             subject: `Portfolio Contact from ${formData.name}`,
           }),
         });
