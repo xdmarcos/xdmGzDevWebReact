@@ -7,13 +7,23 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0] {
   aboutContent,
   aboutContentEs,
   cloudTags,
-  highlights
+  cloudTagsEs,
+  highlights[] {
+    title,
+    titleEs,
+    description,
+    descriptionEs,
+    icon
+  }
 }`
 
 export const contactInfoQuery = `*[_type == "contactInfo"][0] {
   title,
+  titleEs,
   subtitle,
+  subtitleEs,
   services,
+  servicesEs,
   formEndpoint,
   email,
   github,
@@ -25,6 +35,7 @@ export const skillsQuery = `*[_type == "skill"] | order(order asc) {
   name,
   years,
   description,
+  descriptionEs,
   category,
   order
 }`
@@ -33,9 +44,12 @@ export const projectsQuery = `*[_type == "project" && featured == true] | order(
   _id,
   title,
   description,
+  descriptionEs,
   image,
   features,
+  featuresEs,
   technologies,
   metrics,
+  metricsEs,
   order
 }`
