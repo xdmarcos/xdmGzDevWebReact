@@ -28,11 +28,11 @@ const Projects = ({ translations, projects, language }) => {
             const metrics = language === 'es' && project.metricsEs ? project.metricsEs : project.metrics;
             
             return (
-            <Card
-              key={project.id}
-              className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer overflow-hidden group"
-              onClick={() => setSelectedProject({...project, description, features, metrics})}
-            >
+              <Card
+                key={project.id}
+                className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer overflow-hidden group"
+                onClick={() => setSelectedProject({...project, description, features, metrics})}
+              >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
