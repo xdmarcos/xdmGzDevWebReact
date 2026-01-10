@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Badge } from './ui/badge';
 import { ExternalLink, Code } from 'lucide-react';
-import { projects } from '../mock';
 
-const Projects = ({ translations }) => {
+const Projects = ({ translations, projects }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
