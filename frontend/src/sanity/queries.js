@@ -4,17 +4,20 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0] {
   name,
   title,
   description,
-  email,
-  github,
-  linkedin,
   aboutContent,
   aboutContentEs,
   cloudTags,
-  highlights,
-  contactTitle,
-  contactSubtitle,
-  contactServices,
-  formEndpoint
+  highlights
+}`
+
+export const contactInfoQuery = `*[_type == "contactInfo"][0] {
+  title,
+  subtitle,
+  services,
+  formEndpoint,
+  email,
+  github,
+  linkedin
 }`
 
 export const skillsQuery = `*[_type == "skill"] | order(order asc) {

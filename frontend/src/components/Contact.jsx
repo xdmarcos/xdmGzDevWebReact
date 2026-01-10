@@ -6,7 +6,7 @@ import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
-const Contact = ({ translations, personalInfo }) => {
+const Contact = ({ translations, contactInfo, personalInfo }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -15,11 +15,14 @@ const Contact = ({ translations, personalInfo }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Get contact data from personalInfo or use defaults
-  const contactTitle = personalInfo?.contactTitle || translations.contact.title;
-  const contactSubtitle = personalInfo?.contactSubtitle || translations.contact.subtitle;
-  const contactServices = personalInfo?.contactServices || translations.contact.services;
-  const formEndpoint = personalInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+  // Get contact data from contactInfo or use defaults
+  const contactTitle = contactInfo?.title || translations.contact.title;
+  const contactSubtitle = contactInfo?.subtitle || translations.contact.subtitle;
+  const contactServices = contactInfo?.services || translations.contact.services;
+  const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+  const contactEmail = contactInfo?.email || personalInfo?.email;
+  const contactGithub = contactInfo?.github || personalInfo?.github;
+  const contactLinkedin = contactInfo?.linkedin || personalInfo?.linkedin;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +38,7 @@ const Contact = ({ translations, personalInfo }) => {
           },
           body: JSON.stringify({
             ...formData,
-            to: personalInfo.email,
+            to: contactEmail,
             subject: `Portfolio Contact from ${formData.name}`,
           }),
         });
@@ -62,14 +65,14 @@ const Contact = ({ translations, personalInfo }) => {
         // Log to console for development
         console.log('Form submission (demo mode):', {
           ...formData,
-          to: personalInfo.email
+          to: contactEmail
         });
       }
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact me directly at " + personalInfo.email,
+        description: "Please try again or contact me directly at " + contactEmail,
         variant: "destructive",
       });
     } finally {
@@ -88,22 +91,22 @@ const Contact = ({ translations, personalInfo }) => {
     {
       icon: Mail,
       label: 'Email',
-      value: personalInfo.email,
-      href: `mailto:${personalInfo.email}`,
+      value: contactEmail,
+      href: `mailto:${contactEmail}`,
       color: 'text-cyan-400'
     },
     {
       icon: Github,
       label: 'GitHub',
-      value: personalInfo.github,
-      href: `https://${personalInfo.github}`,
+      value: contactGithub,
+      href: `https://${contactGithub}`,
       color: 'text-slate-300'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: personalInfo.linkedin,
-      href: `https://${personalInfo.linkedin}`,
+      value: contactLinkedin,
+      href: `https://${contactLinkedin}`,
       color: 'text-blue-400'
     }
   ];
@@ -249,7 +252,7 @@ const Contact = ({ translations, personalInfo }) => {
         {/* Footer */}
         <footer className="mt-20 pt-8 border-t border-slate-800 text-center">
           <p className="text-slate-500">
-            © {new Date().getFullYear()} {personalInfo.name}. Built with React & SwiftUI inspiration.
+            © {new Date().getFullYear()} {personalInfo?.name || 'xdmGzDev'}. Built with React & SwiftUI inspiration.
           </p>
         </footer>
       </div>

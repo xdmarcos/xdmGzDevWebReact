@@ -22,22 +22,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-      validation: Rule => Rule.required().email(),
-    },
-    {
-      name: 'github',
-      title: 'GitHub URL',
-      type: 'string',
-    },
-    {
-      name: 'linkedin',
-      title: 'LinkedIn URL',
-      type: 'string',
-    },
-    {
       name: 'aboutContent',
       title: 'About Me Content',
       type: 'text',
@@ -104,31 +88,6 @@ export default {
         },
       ],
       validation: Rule => Rule.max(6),
-    },
-    {
-      name: 'contactTitle',
-      title: 'Contact Section Title',
-      type: 'string',
-      description: 'e.g., "Let\'s Work Together"',
-    },
-    {
-      name: 'contactSubtitle',
-      title: 'Contact Section Subtitle',
-      type: 'text',
-      description: 'Brief description below the title',
-    },
-    {
-      name: 'contactServices',
-      title: 'Services List',
-      type: 'array',
-      of: [{type: 'string'}],
-      description: 'List of services you can help with',
-    },
-    {
-      name: 'formEndpoint',
-      title: 'Form Submission Endpoint',
-      type: 'string',
-      description: 'URL for form submissions (e.g., Web3Forms, Formspree, or custom endpoint)',
     },
   ],
 }
