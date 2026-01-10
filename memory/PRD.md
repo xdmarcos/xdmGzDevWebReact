@@ -45,6 +45,10 @@ Build a modern, responsive portfolio website for a Senior iOS Engineer, "xdmGzDe
   - Working form submission with iframe approach
   - Access key configured
   - Bilingual success/error messages
+- [x] **Project URL Feature** (Jan 2026)
+  - Clickable external link on project cards
+  - "View on App Store" button in modal (bilingual)
+  - Added to mock data, Sanity schema, and import script
 
 ### File Structure
 ```

@@ -63,6 +63,12 @@ export default {
       description: 'Spanish version of metrics',
     },
     {
+      name: 'projectUrl',
+      title: 'Project URL',
+      type: 'url',
+      description: 'Link to the app (App Store, GitHub, or live demo)',
+    },
+    {
       name: 'order',
       title: 'Display Order',
       type: 'number',

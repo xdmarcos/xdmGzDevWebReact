@@ -75,10 +75,23 @@ const Projects = ({ translations, projects, language }) => {
                   )}
                 </div>
 
-                {/* Metrics */}
-                <div className="flex items-center text-cyan-400 text-sm font-medium pt-2">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {metrics}
+                {/* Metrics with Link */}
+                <div className="flex items-center justify-between pt-2">
+                  <span className="text-cyan-400 text-sm font-medium">
+                    {metrics}
+                  </span>
+                  {project.projectUrl && (
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-2 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-300 transition-all duration-300 hover:scale-110"
+                      title="View on App Store"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -152,10 +165,22 @@ const Projects = ({ translations, projects, language }) => {
                   </div>
                 </div>
 
-                {/* Metrics */}
-                <div className="flex items-center text-cyan-400 font-medium">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  {selectedProject.metrics}
+                {/* Metrics and Project Link */}
+                <div className="flex items-center justify-between">
+                  <div className="text-cyan-400 font-medium">
+                    {selectedProject.metrics}
+                  </div>
+                  {selectedProject.projectUrl && (
+                    <a
+                      href={selectedProject.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/30"
+                    >
+                      {language === 'es' ? 'Ver en App Store' : 'View on App Store'}
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
