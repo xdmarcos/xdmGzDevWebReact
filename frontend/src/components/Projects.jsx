@@ -51,7 +51,7 @@ const Projects = ({ translations, projects, language }) => {
               <CardContent className="p-6 space-y-4">
                 {/* Description */}
                 <p className="text-slate-400 text-sm line-clamp-3">
-                  {project.description}
+                  {description}
                 </p>
 
                 {/* Technologies */}
@@ -78,11 +78,12 @@ const Projects = ({ translations, projects, language }) => {
                 {/* Metrics */}
                 <div className="flex items-center text-cyan-400 text-sm font-medium pt-2">
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  {project.metrics}
+                  {metrics}
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Project Modal/Expanded View */}
