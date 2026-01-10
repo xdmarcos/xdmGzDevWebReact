@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Code2, Smartphone, Layers } from 'lucide-react';
 
-const About = ({ translations }) => {
+const About = ({ translations, personalInfo, language }) => {
   const highlights = [
     {
       icon: Code2,
@@ -21,6 +21,11 @@ const About = ({ translations }) => {
     }
   ];
 
+  // Get about content based on language
+  const aboutContent = language === 'es' && personalInfo.aboutContentEs 
+    ? personalInfo.aboutContentEs 
+    : personalInfo.aboutContent || translations.about.content;
+
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -37,7 +42,7 @@ const About = ({ translations }) => {
           {/* Text Content */}
           <div className="space-y-6">
             <p className="text-slate-300 text-lg leading-relaxed">
-              {translations.about.content}
+              {aboutContent}
             </p>
             <div className="flex flex-wrap gap-3">
               {['10+ Years', 'Swift Expert', 'iOS Native', 'SwiftUI'].map((badge) => (
