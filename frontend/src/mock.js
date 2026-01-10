@@ -10,21 +10,21 @@ export const personalInfo = {
 };
 
 export const skills = [
-  { name: "Swift", years: "8+", category: "Languages", description: "Core iOS language" },
+  { name: "Swift", years: "10+", category: "Languages", description: "Core iOS language" },
   { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI" },
-  { name: "UIKit", years: "8+", category: "Frameworks", description: "Traditional iOS UI framework" },
-  { name: "Combine", years: "4+", category: "Frameworks", description: "Reactive programming" },
-  { name: "Core Data", years: "6+", category: "Data", description: "Local data persistence" },
-  { name: "CloudKit", years: "4+", category: "Cloud", description: "Apple cloud services" },
-  { name: "Firebase", years: "5+", category: "Backend", description: "Backend as a service" },
-  { name: "REST APIs", years: "8+", category: "Integration", description: "RESTful services" },
-  { name: "GraphQL", years: "3+", category: "Integration", description: "Modern API queries" },
-  { name: "Xcode", years: "10+", category: "Tools", description: "Apple IDE" },
-  { name: "Git", years: "10+", category: "Tools", description: "Version control" },
-  { name: "Fastlane", years: "4+", category: "CI/CD", description: "iOS automation" },
-  { name: "TestFlight", years: "6+", category: "Distribution", description: "Beta testing platform" },
-  { name: "MVVM", years: "6+", category: "Architecture", description: "Design pattern" },
-  { name: "Clean Architecture", years: "5+", category: "Architecture", description: "Scalable app structure" }
+  { name: "UIKit", years: "10+", category: "Frameworks", description: "Traditional iOS UI framework" },
+  { name: "Combine", years: "3+", category: "Frameworks", description: "Reactive programming" },
+  { name: "Core Data", years: "5+", category: "Data", description: "Local data persistence" },
+  { name: "CloudKit", years: "2+", category: "Cloud", description: "Apple cloud services" },
+  { name: "Firebase", years: "8+", category: "Backend", description: "Backend as a service" },
+  { name: "REST APIs", years: "15+", category: "Integration", description: "RESTful services" },
+  { name: "GraphQL", years: "2+", category: "Integration", description: "Modern API queries" },
+  { name: "Xcode", years: "15+", category: "Tools", description: "Apple IDE" },
+  { name: "Git", years: "14+", category: "Tools", description: "Version control" },
+  { name: "Fastlane", years: "8+", category: "CI/CD", description: "iOS automation" },
+  { name: "TestFlight", years: "12+", category: "Distribution", description: "Beta testing platform" },
+  { name: "MVVM", years: "5+", category: "Architecture", description: "Design pattern" },
+  { name: "Clean Architecture", years: "12+", category: "Architecture", description: "Scalable app structure" }
 ];
 
 export const projects = [
