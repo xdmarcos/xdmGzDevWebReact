@@ -62,7 +62,7 @@ const About = ({ translations, personalInfo, language }) => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="space-y-6">
-            <p className="text-slate-300 text-lg leading-relaxed">
+            <p className="text-slate-300 text-lg leading-relaxed text-justify">
               {aboutContent}
             </p>
             {/* Cloud Tags */}
