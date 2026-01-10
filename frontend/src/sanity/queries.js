@@ -8,7 +8,9 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0] {
   github,
   linkedin,
   aboutContent,
-  aboutContentEs
+  aboutContentEs,
+  cloudTags,
+  highlights
 }`
 
 export const skillsQuery = `*[_type == "skill"] | order(order asc) {
