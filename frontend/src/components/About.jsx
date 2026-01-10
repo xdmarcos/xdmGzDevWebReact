@@ -20,27 +20,37 @@ const About = ({ translations, personalInfo, language }) => {
     {
       icon: "Code2",
       title: "Clean Code",
-      description: "Writing maintainable, testable, and scalable code"
+      titleEs: "Código Limpio",
+      description: "Writing maintainable, testable, and scalable code",
+      descriptionEs: "Escribiendo código mantenible, testeable y escalable"
     },
     {
       icon: "Smartphone",
       title: "Native iOS",
-      description: "Deep expertise in Swift and iOS frameworks"
+      titleEs: "iOS Nativo",
+      description: "Deep expertise in Swift and iOS frameworks",
+      descriptionEs: "Experiencia profunda en Swift y frameworks de iOS"
     },
     {
       icon: "Layers",
       title: "Architecture",
-      description: "MVVM, Clean Architecture, and design patterns"
+      titleEs: "Arquitectura",
+      description: "MVVM, Clean Architecture, and design patterns",
+      descriptionEs: "MVVM, Arquitectura Limpia y patrones de diseño"
     },
     {
       icon: "CheckCircle2",
       title: "Code Quality",
-      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
+      titleEs: "Calidad de Código",
+      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more",
+      descriptionEs: "Pruebas Unitarias, Pruebas de UI, Pruebas de Captura, Pruebas de Integración y más"
     }
   ];
 
   // Get cloud tags from personalInfo or use defaults
-  const cloudTags = personalInfo?.cloudTags || ['10+ Years', 'Swift Expert', 'iOS Native', 'SwiftUI'];
+  const cloudTags = language === 'es' && personalInfo?.cloudTagsEs 
+    ? personalInfo.cloudTagsEs 
+    : (personalInfo?.cloudTags || ['10+ Years', 'Swift Expert', 'iOS Native', 'SwiftUI']);
 
   // Get about content based on language
   const aboutContent = language === 'es' && personalInfo?.aboutContentEs 
