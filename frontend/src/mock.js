@@ -177,7 +177,38 @@ export const translations = {
       greeting: "Hola, soy",
       cta1: "Ver Proyectos",
       cta2: "Contactar"
+    },
+    about: {
+      title: "Sobre Mí",
+      content: "Ingeniero iOS apasionado con amplia experiencia creando aplicaciones móviles innovadoras que deleitan a los usuarios y impulsan el éxito empresarial. Me especializo en construir aplicaciones iOS de alto rendimiento usando Swift, SwiftUI y patrones arquitectónicos modernos. Con un ojo agudo para el diseño y la experiencia del usuario, creo aplicaciones que no solo funcionan perfectamente, sino que también proporcionan interfaces intuitivas y atractivas. Estoy comprometido con código limpio, arquitectura escalable y entrega de implementaciones perfectas."
+    },
+    skills: {
+      title: "Habilidades Técnicas",
+      subtitle: "Experiencia en todo el ecosistema de desarrollo iOS"
+    },
+    projects: {
+      title: "Proyectos Destacados",
+      subtitle: "Mostrando mi experiencia en desarrollo iOS y diseño de experiencia de usuario",
+      features: "Características Clave",
+      technologies: "Tecnologías"
+    },
+    contact: {
+      title: "Trabajemos Juntos",
+      subtitle: "¿Listo para dar vida a tu idea de app iOS? Hablemos sobre tu proyecto.",
+      form: {
+        name: "Nombre Completo",
+        email: "Correo Electrónico",
+        message: "Detalles del Proyecto",
+        send: "Enviar Mensaje"
+      },
+      help: "En Qué Puedo Ayudar",
+      services: [
+        "Desarrollo de apps iOS (Swift/SwiftUI)",
+        "Arquitectura y optimización de apps",
+        "Implementación de UI/UX",
+        "Optimización para App Store",
+        "Consultoría técnica"
+      ]
     }
-    // Spanish translations will be added later
   }
 };
