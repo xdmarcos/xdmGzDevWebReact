@@ -1,35 +1,51 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
-import { Code2, Smartphone, Layers, CheckCircle2 } from 'lucide-react';
+import { Code2, Smartphone, Layers, CheckCircle2, Award, Zap, Target, Sparkles } from 'lucide-react';
 
 const About = ({ translations, personalInfo, language }) => {
-  const highlights = [
+  // Icon mapping for dynamic rendering
+  const iconMap = {
+    Code2,
+    Smartphone,
+    Layers,
+    CheckCircle2,
+    Award,
+    Zap,
+    Target,
+    Sparkles
+  };
+
+  // Get highlights from personalInfo or use defaults
+  const highlights = personalInfo?.highlights || [
     {
-      icon: Code2,
-      title: 'Clean Code',
-      description: 'Writing maintainable, testable, and scalable code'
+      icon: "Code2",
+      title: "Clean Code",
+      description: "Writing maintainable, testable, and scalable code"
     },
     {
-      icon: Smartphone,
-      title: 'Native iOS',
-      description: 'Deep expertise in Swift and iOS frameworks'
+      icon: "Smartphone",
+      title: "Native iOS",
+      description: "Deep expertise in Swift and iOS frameworks"
     },
     {
-      icon: Layers,
-      title: 'Architecture',
-      description: 'MVVM, Clean Architecture, and design patterns'
+      icon: "Layers",
+      title: "Architecture",
+      description: "MVVM, Clean Architecture, and design patterns"
     },
     {
-      icon: CheckCircle2,
-      title: 'Code Quality',
-      description: 'Unit Testing, UI Test, Screenshot testing, Integration Tests and more'
+      icon: "CheckCircle2",
+      title: "Code Quality",
+      description: "Unit Testing, UI Test, Screenshot testing, Integration Tests and more"
     }
   ];
 
+  // Get cloud tags from personalInfo or use defaults
+  const cloudTags = personalInfo?.cloudTags || ['10+ Years', 'Swift Expert', 'iOS Native', 'SwiftUI'];
+
   // Get about content based on language
-  const aboutContent = language === 'es' && personalInfo.aboutContentEs 
+  const aboutContent = language === 'es' && personalInfo?.aboutContentEs 
     ? personalInfo.aboutContentEs 
-    : personalInfo.aboutContent || translations.about.content;
+    : personalInfo?.aboutContent || translations.about.content;
 
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -49,11 +65,12 @@ const About = ({ translations, personalInfo, language }) => {
             <p className="text-slate-300 text-lg leading-relaxed">
               {aboutContent}
             </p>
+            {/* Cloud Tags */}
             <div className="flex flex-wrap gap-3">
-              {['10+ Years', 'Swift Expert', 'iOS Native', 'SwiftUI'].map((badge) => (
+              {cloudTags.map((badge) => (
                 <span
                   key={badge}
-                  className="px-4 py-2 bg-slate-800/50 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium"
+                  className="px-4 py-2 bg-slate-800/50 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium hover:bg-slate-800 hover:border-cyan-500/50 transition-all duration-300"
                 >
                   {badge}
                 </span>
@@ -64,7 +81,7 @@ const About = ({ translations, personalInfo, language }) => {
           {/* Highlight Cards */}
           <div className="space-y-4">
             {highlights.map((item, index) => {
-              const Icon = item.icon;
+              const Icon = iconMap[item.icon] || Code2; // Fallback to Code2 if icon not found
               return (
                 <Card
                   key={index}
