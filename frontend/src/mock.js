@@ -10,21 +10,21 @@ export const personalInfo = {
 };
 
 export const skills = [
-  { name: "Swift", level: 98, category: "Languages" },
-  { name: "SwiftUI", level: 95, category: "Frameworks" },
-  { name: "UIKit", level: 92, category: "Frameworks" },
-  { name: "Combine", level: 88, category: "Frameworks" },
-  { name: "Core Data", level: 90, category: "Data" },
-  { name: "CloudKit", level: 85, category: "Cloud" },
-  { name: "Firebase", level: 87, category: "Backend" },
-  { name: "REST APIs", level: 94, category: "Integration" },
-  { name: "GraphQL", level: 82, category: "Integration" },
-  { name: "Xcode", level: 96, category: "Tools" },
-  { name: "Git", level: 93, category: "Tools" },
-  { name: "Fastlane", level: 86, category: "CI/CD" },
-  { name: "TestFlight", level: 90, category: "Distribution" },
-  { name: "MVVM", level: 94, category: "Architecture" },
-  { name: "Clean Architecture", level: 91, category: "Architecture" }
+  { name: "Swift", years: "8+", category: "Languages", description: "Core iOS language" },
+  { name: "SwiftUI", years: "5+", category: "Frameworks", description: "Modern declarative UI" },
+  { name: "UIKit", years: "8+", category: "Frameworks", description: "Traditional iOS UI framework" },
+  { name: "Combine", years: "4+", category: "Frameworks", description: "Reactive programming" },
+  { name: "Core Data", years: "6+", category: "Data", description: "Local data persistence" },
+  { name: "CloudKit", years: "4+", category: "Cloud", description: "Apple cloud services" },
+  { name: "Firebase", years: "5+", category: "Backend", description: "Backend as a service" },
+  { name: "REST APIs", years: "8+", category: "Integration", description: "RESTful services" },
+  { name: "GraphQL", years: "3+", category: "Integration", description: "Modern API queries" },
+  { name: "Xcode", years: "10+", category: "Tools", description: "Apple IDE" },
+  { name: "Git", years: "10+", category: "Tools", description: "Version control" },
+  { name: "Fastlane", years: "4+", category: "CI/CD", description: "iOS automation" },
+  { name: "TestFlight", years: "6+", category: "Distribution", description: "Beta testing platform" },
+  { name: "MVVM", years: "6+", category: "Architecture", description: "Design pattern" },
+  { name: "Clean Architecture", years: "5+", category: "Architecture", description: "Scalable app structure" }
 ];
 
 export const projects = [
