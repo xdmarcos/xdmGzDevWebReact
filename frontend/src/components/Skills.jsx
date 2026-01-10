@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Clock, Award } from 'lucide-react';
 
-const Skills = ({ translations, skills }) => {
+const Skills = ({ translations, skills, language }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', ...new Set(skills.map(skill => skill.category))];
