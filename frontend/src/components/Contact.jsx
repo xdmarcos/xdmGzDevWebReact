@@ -29,6 +29,7 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     : (contactInfo?.services || translations.contact.services);
   
   const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
+  const web3formsKey = process.env.REACT_APP_WEB3FORMS_KEY;
   const contactEmail = contactInfo?.email || personalInfo?.email;
   const contactGithub = contactInfo?.github || personalInfo?.github;
   const contactLinkedin = contactInfo?.linkedin || personalInfo?.linkedin;
@@ -38,36 +39,46 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     setIsSubmitting(true);
 
     try {
-      // If formEndpoint is configured, send to real endpoint
-      if (formEndpoint) {
+      // If Web3Forms is configured, send to Web3Forms
+      if (formEndpoint && web3formsKey) {
         const response = await fetch(formEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
           body: JSON.stringify({
-            ...formData,
-            to: contactEmail,
+            access_key: web3formsKey,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
             subject: `Portfolio Contact from ${formData.name}`,
+            from_name: 'xdmGzDev Portfolio',
           }),
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (result.success) {
           toast({
-            title: "Message sent successfully!",
-            description: "Thank you for reaching out. I'll get back to you soon.",
+            title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
+            description: language === 'es' 
+              ? "Gracias por contactarme. Te responderé pronto."
+              : "Thank you for reaching out. I'll get back to you soon.",
           });
           setFormData({ name: '', email: '', message: '' });
         } else {
-          throw new Error('Failed to send message');
+          throw new Error(result.message || 'Failed to send message');
         }
       } else {
         // Fallback: Simulate form submission for demo/development
         await new Promise(resolve => setTimeout(resolve, 1500));
         
         toast({
-          title: "Message sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
+          title: language === 'es' ? "¡Mensaje enviado!" : "Message sent!",
+          description: language === 'es'
+            ? "Gracias por contactarme. Te responderé pronto."
+            : "Thank you for reaching out. I'll get back to you soon.",
         });
         setFormData({ name: '', email: '', message: '' });
         
@@ -80,8 +91,10 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
-        title: "Error sending message",
-        description: "Please try again or contact me directly at " + contactEmail,
+        title: language === 'es' ? "Error al enviar mensaje" : "Error sending message",
+        description: language === 'es'
+          ? `Por favor intenta de nuevo o contáctame directamente en ${contactEmail}`
+          : `Please try again or contact me directly at ${contactEmail}`,
         variant: "destructive",
       });
     } finally {
