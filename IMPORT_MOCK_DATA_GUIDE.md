@@ -23,27 +23,30 @@ Note your **Project ID** from the output.
    - Permissions: **Editor** or **Administrator**
 5. Copy the token
 
-### Step 3: Configure Environment
+### Step 3: Run Import Script
 
-Create `/app/studio/.env`:
+```bash
+cd /app/studio
+./import-data.sh
+```
 
-```env
+The script will:
+1. Create `.env` file if it doesn't exist
+2. Prompt you to add credentials
+3. Import all mock data to Sanity
+
+**Or manually:**
+
+```bash
+# Create .env file
+cd /app/studio
+cat > .env << EOF
 SANITY_PROJECT_ID=your-project-id
-SANITY_WRITE_TOKEN=your-write-token-here
-```
+SANITY_WRITE_TOKEN=your-write-token
+EOF
 
-### Step 4: Install Dependencies
-
-```bash
-cd /app/studio
-yarn add dotenv
-```
-
-### Step 5: Run Import Script
-
-```bash
-cd /app/studio
-node importMockData.js
+# Run import
+node importMockData.cjs
 ```
 
 You should see:
