@@ -31,10 +31,14 @@ const Portfolio = () => {
   // Fetch data from Sanity if enabled
   useEffect(() => {
     async function fetchSanityData() {
-      if (!useSanity) return;
+      if (!useSanity || !client) {
+        console.log('Using mock data - Sanity not configured or disabled');
+        return;
+      }
 
       try {
         setLoading(true);
+        console.log('Fetching data from Sanity...');
         
         const [personalData, skillsData, projectsData] = await Promise.all([
           client.fetch(personalInfoQuery),
@@ -57,6 +61,7 @@ const Portfolio = () => {
         if (skillsData.length > 0) setSkills(skillsData);
         if (transformedProjects.length > 0) setProjects(transformedProjects);
         
+        console.log('Sanity data loaded successfully');
         setLoading(false);
       } catch (error) {
         console.error('Error fetching Sanity data:', error);
