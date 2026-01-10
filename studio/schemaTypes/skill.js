@@ -10,10 +10,17 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'level',
-      title: 'Proficiency Level (%)',
-      type: 'number',
-      validation: Rule => Rule.required().min(0).max(100),
+      name: 'years',
+      title: 'Years of Experience',
+      type: 'string',
+      description: 'e.g., "5+", "3-5", "10+"',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'description',
+      title: 'Short Description',
+      type: 'string',
+      description: 'Brief description of the skill',
     },
     {
       name: 'category',
@@ -49,4 +56,18 @@ export default {
       by: [{field: 'order', direction: 'asc'}],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'years',
+      category: 'category',
+    },
+    prepare(selection) {
+      const {title, subtitle, category} = selection
+      return {
+        title,
+        subtitle: `${subtitle} years • ${category}`,
+      }
+    },
+  },
 }
