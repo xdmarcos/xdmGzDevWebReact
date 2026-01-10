@@ -41,7 +41,7 @@ export const projects = [
     ],
     technologies: ["Swift", "SwiftUI", "Combine", "Core Data", "Firebase", "Charts API"],
     metrics: "1.5M+ downloads, 4.7★ App Store rating",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1762279389002-7b6abd7bd6c6?w=800&q=80"
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ export const projects = [
     ],
     technologies: ["Swift", "HealthKit", "WatchOS", "CloudKit", "Core Motion", "WidgetKit"],
     metrics: "Featured by Apple, 800K+ active users",
-    image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1709634539435-f9fccaf0fda1?w=800&q=80"
   },
   {
     id: 3,
@@ -71,7 +71,7 @@ export const projects = [
     ],
     technologies: ["Swift", "ARKit", "StoreKit", "Core ML", "Firebase", "Alamofire"],
     metrics: "50% increase in conversion rate",
-    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1709626011485-6fe000ea2dbc?w=800&q=80"
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ export const projects = [
     ],
     technologies: ["Swift", "AVFoundation", "Core Data", "Realm", "URLSession", "Charts"],
     metrics: "Used by 300+ schools worldwide",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1762326866764-1ef1a008e0ad?w=800&q=80"
   },
   {
     id: 5,
@@ -101,7 +101,7 @@ export const projects = [
     ],
     technologies: ["Swift", "MapKit", "Core Location", "PhotoKit", "SwiftUI", "Combine"],
     metrics: "4.8★ rating, 600K downloads",
-    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1748716460543-1916e86eebee?w=800&q=80"
   },
   {
     id: 6,
@@ -116,7 +116,7 @@ export const projects = [
     ],
     technologies: ["Swift", "AVFoundation", "UserNotifications", "WidgetKit", "SwiftUI", "CloudKit"],
     metrics: "Featured in App Store, 4.9★ rating",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1759481269661-2eb42cc1d3db?w=800&q=80"
   }
 ];
 
