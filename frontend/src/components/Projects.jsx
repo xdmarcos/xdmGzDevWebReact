@@ -165,10 +165,23 @@ const Projects = ({ translations, projects, language }) => {
                   </div>
                 </div>
 
-                {/* Metrics */}
-                <div className="flex items-center text-cyan-400 font-medium">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  {selectedProject.metrics}
+                {/* Metrics and Project Link */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-cyan-400 font-medium">
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    {selectedProject.metrics}
+                  </div>
+                  {selectedProject.projectUrl && (
+                    <a
+                      href={selectedProject.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/30"
+                    >
+                      {language === 'es' ? 'Ver en App Store' : 'View on App Store'}
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
