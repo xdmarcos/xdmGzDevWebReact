@@ -167,8 +167,7 @@ const Projects = ({ translations, projects, language }) => {
 
                 {/* Metrics and Project Link */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center text-cyan-400 font-medium">
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                  <div className="text-cyan-400 font-medium">
                     {selectedProject.metrics}
                   </div>
                   {selectedProject.projectUrl && (
