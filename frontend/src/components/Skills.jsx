@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { skills } from '../mock';
 
-const Skills = ({ translations }) => {
+const Skills = ({ translations, skills }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', ...new Set(skills.map(skill => skill.category))];
