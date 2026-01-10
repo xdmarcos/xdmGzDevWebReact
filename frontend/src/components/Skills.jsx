@@ -34,7 +34,7 @@ const Skills = ({ translations, skills }) => {
     if (numYears >= 8) return { text: 'Expert', color: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/50' };
     if (numYears >= 5) return { text: 'Advanced', color: 'bg-blue-500/20 text-blue-400 border-blue-500/50' };
     if (numYears >= 3) return { text: 'Proficient', color: 'bg-teal-500/20 text-teal-400 border-teal-500/50' };
-    return { text: 'Learning', color: 'bg-slate-500/20 text-slate-400 border-slate-500/50' };
+    return { text: 'Familiar', color: 'bg-slate-500/20 text-slate-400 border-slate-500/50' };
   };
 
   return (
