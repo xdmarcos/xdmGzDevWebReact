@@ -41,6 +41,10 @@ Build a modern, responsive portfolio website for a Senior iOS Engineer, "xdmGzDe
   - Projects: descriptions, features, metrics
   - Contact: all form labels & services
   - Mock data and Sanity schemas both updated with Spanish fields
+- [x] **Web3Forms Contact Form Integration** (Jan 2026)
+  - Working form submission with iframe approach
+  - Access key configured
+  - Bilingual success/error messages
 
 ### File Structure
 ```
