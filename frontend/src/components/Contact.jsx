@@ -39,22 +39,19 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     setIsSubmitting(true);
 
     try {
-      // If Web3Forms is configured, send to Web3Forms
+      // If Web3Forms is configured, send via FormData to avoid CORS
       if (formEndpoint && web3formsKey) {
+        const formDataObj = new FormData();
+        formDataObj.append('access_key', web3formsKey);
+        formDataObj.append('name', formData.name);
+        formDataObj.append('email', formData.email);
+        formDataObj.append('message', formData.message);
+        formDataObj.append('subject', `Portfolio Contact from ${formData.name}`);
+        formDataObj.append('from_name', 'xdmGzDev Portfolio');
+
         const response = await fetch(formEndpoint, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: web3formsKey,
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            subject: `Portfolio Contact from ${formData.name}`,
-            from_name: 'xdmGzDev Portfolio',
-          }),
+          body: formDataObj,
         });
 
         const result = await response.json();
