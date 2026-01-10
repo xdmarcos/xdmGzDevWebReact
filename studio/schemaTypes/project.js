@@ -11,9 +11,14 @@ export default {
     },
     {
       name: 'description',
-      title: 'Description',
+      title: 'Description (English)',
       type: 'text',
       validation: Rule => Rule.required(),
+    },
+    {
+      name: 'descriptionEs',
+      title: 'Description (Spanish)',
+      type: 'text',
     },
     {
       name: 'image',
@@ -26,10 +31,16 @@ export default {
     },
     {
       name: 'features',
-      title: 'Key Features',
+      title: 'Key Features (English)',
       type: 'array',
       of: [{type: 'string'}],
       validation: Rule => Rule.required().min(3),
+    },
+    {
+      name: 'featuresEs',
+      title: 'Key Features (Spanish)',
+      type: 'array',
+      of: [{type: 'string'}],
     },
     {
       name: 'technologies',
@@ -40,10 +51,16 @@ export default {
     },
     {
       name: 'metrics',
-      title: 'Project Metrics',
+      title: 'Project Metrics (English)',
       type: 'string',
       description: 'E.g., "1.5M+ downloads, 4.7★ App Store rating"',
       validation: Rule => Rule.required(),
+    },
+    {
+      name: 'metricsEs',
+      title: 'Project Metrics (Spanish)',
+      type: 'string',
+      description: 'Spanish version of metrics',
     },
     {
       name: 'order',
