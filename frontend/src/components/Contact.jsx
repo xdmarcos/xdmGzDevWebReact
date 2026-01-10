@@ -72,7 +72,7 @@ const Contact = ({ translations, contactInfo, personalInfo }) => {
       console.error('Form submission error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact me directly at " + personalInfo.email,
+        description: "Please try again or contact me directly at " + contactEmail,
         variant: "destructive",
       });
     } finally {
