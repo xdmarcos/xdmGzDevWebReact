@@ -217,8 +217,8 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
                 }}
                 className="space-y-6"
               >
-                {/* Web3Forms access key */}
-                <input type="hidden" name="access_key" value={web3formsKey || ''} />
+                {/* Web3Forms access key - hardcoded for reliability */}
+                <input type="hidden" name="access_key" value="c94f9c2e-c22e-40e5-9fd3-6725511be632" />
                 <input type="hidden" name="subject" value="Portfolio Contact Form Submission" />
                 <input type="hidden" name="from_name" value="xdmGzDev Portfolio" />
                 
