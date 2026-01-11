@@ -28,82 +28,30 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     ? contactInfo.servicesEs 
     : (contactInfo?.services || translations.contact.services);
   
-  const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT;
-  const web3formsKey = process.env.REACT_APP_WEB3FORMS_KEY;
   const contactEmail = contactInfo?.email || personalInfo?.email;
   const contactGithub = contactInfo?.github || personalInfo?.github;
   const contactLinkedin = contactInfo?.linkedin || personalInfo?.linkedin;
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // If Web3Forms is configured, send via FormData to avoid CORS
-      if (formEndpoint && web3formsKey) {
-        const formDataObj = new FormData();
-        formDataObj.append('access_key', web3formsKey);
-        formDataObj.append('name', formData.name);
-        formDataObj.append('email', formData.email);
-        formDataObj.append('message', formData.message);
-        formDataObj.append('subject', `Portfolio Contact from ${formData.name}`);
-        formDataObj.append('from_name', 'xdmGzDev Portfolio');
-
-        const response = await fetch(formEndpoint, {
-          method: 'POST',
-          body: formDataObj,
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          toast({
-            title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
-            description: language === 'es' 
-              ? "Gracias por contactarme. Te responderé pronto."
-              : "Thank you for reaching out. I'll get back to you soon.",
-          });
-          setFormData({ name: '', email: '', message: '' });
-        } else {
-          throw new Error(result.message || 'Failed to send message');
-        }
-      } else {
-        // Fallback: Simulate form submission for demo/development
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        toast({
-          title: language === 'es' ? "¡Mensaje enviado!" : "Message sent!",
-          description: language === 'es'
-            ? "Gracias por contactarme. Te responderé pronto."
-            : "Thank you for reaching out. I'll get back to you soon.",
-        });
-        setFormData({ name: '', email: '', message: '' });
-        
-        // Log to console for development
-        console.log('Form submission (demo mode):', {
-          ...formData,
-          to: contactEmail
-        });
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      toast({
-        title: language === 'es' ? "Error al enviar mensaje" : "Error sending message",
-        description: language === 'es'
-          ? `Por favor intenta de nuevo o contáctame directamente en ${contactEmail}`
-          : `Please try again or contact me directly at ${contactEmail}`,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleFormSubmit = () => {
+    setIsSubmitting(true);
+    // Show success message after form submits to iframe
+    setTimeout(() => {
+      toast({
+        title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
+        description: language === 'es' 
+          ? "Gracias por contactarme. Te responderé pronto."
+          : "Thank you for reaching out. I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', message: '' });
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   const socialLinks = [
@@ -194,30 +142,23 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
           {/* Contact Form */}
           <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm">
             <CardContent className="p-8">
-              {/* Hidden iframe for form submission */}
-              <iframe name="web3forms-iframe" id="web3forms-iframe" style={{ display: 'none' }} title="form-target"></iframe>
+              {/* Hidden iframe for form submission - bypasses CORS */}
+              <iframe 
+                name="web3forms-iframe" 
+                id="web3forms-iframe" 
+                style={{ display: 'none' }} 
+                title="form-target"
+              />
               
+              {/* Native HTML form - most reliable method */}
               <form 
                 action="https://api.web3forms.com/submit" 
                 method="POST"
                 target="web3forms-iframe"
-                onSubmit={(e) => {
-                  setIsSubmitting(true);
-                  // Show success message after a short delay
-                  setTimeout(() => {
-                    toast({
-                      title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
-                      description: language === 'es' 
-                        ? "Gracias por contactarme. Te responderé pronto."
-                        : "Thank you for reaching out. I'll get back to you soon.",
-                    });
-                    setFormData({ name: '', email: '', message: '' });
-                    setIsSubmitting(false);
-                  }, 1500);
-                }}
+                onSubmit={handleFormSubmit}
                 className="space-y-6"
               >
-                {/* Web3Forms access key - hardcoded for reliability */}
+                {/* Web3Forms configuration */}
                 <input type="hidden" name="access_key" value="c94f9c2e-c22e-40e5-9fd3-6725511be632" />
                 <input type="hidden" name="subject" value="Portfolio Contact Form Submission" />
                 <input type="hidden" name="from_name" value="xdmGzDev Portfolio" />
@@ -269,7 +210,7 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
                     disabled={isSubmitting}
                     rows={6}
                     className="bg-slate-900/50 border-slate-600 text-slate-100 focus:border-cyan-500 focus:ring-cyan-500/50 resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder={language === 'es' ? "Cuéntame sobre tu proyecto..." : "Tell me about your project..."}
                   />
                 </div>
 
@@ -281,7 +222,7 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
                       <Loader2 className="w-5 h-5 mr-3 animate-spin" />
-                      Sending...
+                      {language === 'es' ? 'Enviando...' : 'Sending...'}
                     </span>
                   ) : (
                     <span className="flex items-center justify-center">
