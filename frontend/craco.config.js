@@ -1,10 +1,9 @@
 // craco.config.js
 const path = require("path");
-require("dotenv").config();
 
 // Check if we're in development/preview mode (not production build)
 // Craco sets NODE_ENV=development for start, NODE_ENV=production for build
-const isDevServer = process.env.NODE_ENV !== "production";
+const isDevServer = process.env.NODE_ENV === "development";
 
 // Environment variable overrides
 const config = {
@@ -46,7 +45,37 @@ const webpackConfig = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-    configure: (webpackConfig) => {
+    configure: (webpackConfig, { env }) => {
+      if (env === "production") {
+          // Remove React Refresh Webpack plugin
+          webpackConfig.plugins = webpackConfig.plugins.filter(
+            (plugin) => plugin.constructor.name !== "ReactRefreshPlugin"
+          );
+
+          // Remove react-refresh/babel from babel-loader
+          webpackConfig.module.rules.forEach((rule) => {
+            if (!rule.oneOf) return;
+
+            rule.oneOf.forEach((loader) => {
+              if (
+                loader.loader &&
+                loader.loader.includes("babel-loader") &&
+                loader.options &&
+                loader.options.plugins
+              ) {
+                loader.options.plugins = loader.options.plugins.filter(
+                  (plugin) =>
+                    !(
+                      (Array.isArray(plugin) &&
+                        plugin[0]?.includes("react-refresh")) ||
+                      (typeof plugin === "string" &&
+                        plugin.includes("react-refresh"))
+                    )
+                );
+              }
+            });
+          });
+        }
 
       // Add ignored patterns to reduce watched directories
         webpackConfig.watchOptions = {
