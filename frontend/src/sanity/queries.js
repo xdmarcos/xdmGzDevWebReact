@@ -42,6 +42,19 @@ export const skillsQuery = `*[_type == "skill"] | order(order asc) {
   order
 }`
 
+export const projectsSectionQuery = `*[_type == "projectsSection"][0] {
+  title,
+  titleEs,
+  subtitle,
+  subtitleEs,
+  featuresLabel,
+  featuresLabelEs,
+  technologiesLabel,
+  technologiesLabelEs,
+  viewButtonLabel,
+  viewButtonLabelEs
+}`
+
 export const projectsQuery = `*[_type == "project" && featured == true] | order(order asc) {
   _id,
   title,

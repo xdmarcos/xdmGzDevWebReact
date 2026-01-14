@@ -1,5 +1,18 @@
 // Mock data for portfolio
 
+export const projectsSection = {
+  title: "Featured Projects",
+  titleEs: "Proyectos Destacados",
+  subtitle: "Showcasing my expertise in iOS development and user experience design",
+  subtitleEs: "Mostrando mi experiencia en desarrollo iOS y diseño de experiencia de usuario",
+  featuresLabel: "Key Features",
+  featuresLabelEs: "Características Clave",
+  technologiesLabel: "Technologies",
+  technologiesLabelEs: "Tecnologías",
+  viewButtonLabel: "View on App Store",
+  viewButtonLabelEs: "Ver en App Store"
+};
+
 export const personalInfo = {
   name: "xdmGzDev",
   title: "Senior iOS Engineer",

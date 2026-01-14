@@ -3,8 +3,29 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Badge } from './ui/badge';
 import { ExternalLink, Code } from 'lucide-react';
 
-const Projects = ({ translations, projects, language }) => {
+const Projects = ({ translations, projects, projectsSection, language }) => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Get section content from projectsSection or fallback to translations
+  const sectionTitle = language === 'es' && projectsSection?.titleEs 
+    ? projectsSection.titleEs 
+    : (projectsSection?.title || translations.projects.title);
+  
+  const sectionSubtitle = language === 'es' && projectsSection?.subtitleEs 
+    ? projectsSection.subtitleEs 
+    : (projectsSection?.subtitle || translations.projects.subtitle);
+  
+  const featuresLabel = language === 'es' && projectsSection?.featuresLabelEs 
+    ? projectsSection.featuresLabelEs 
+    : (projectsSection?.featuresLabel || translations.projects.features);
+  
+  const technologiesLabel = language === 'es' && projectsSection?.technologiesLabelEs 
+    ? projectsSection.technologiesLabelEs 
+    : (projectsSection?.technologiesLabel || translations.projects.technologies);
+  
+  const viewButtonLabel = language === 'es' && projectsSection?.viewButtonLabelEs 
+    ? projectsSection.viewButtonLabelEs 
+    : (projectsSection?.viewButtonLabel || (language === 'es' ? 'Ver en App Store' : 'View on App Store'));
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -12,10 +33,10 @@ const Projects = ({ translations, projects, language }) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
-            {translations.projects.title}
+            {sectionTitle}
           </h2>
           <p className="text-slate-400 text-lg max-w-3xl mx-auto">
-            {translations.projects.subtitle}
+            {sectionSubtitle}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4" />
         </div>
@@ -136,7 +157,7 @@ const Projects = ({ translations, projects, language }) => {
                 {/* Features */}
                 <div className="mb-6">
                   <h4 className="text-xl font-semibold text-cyan-400 mb-3">
-                    {translations.projects.features}
+                    {featuresLabel}
                   </h4>
                   <ul className="space-y-2">
                     {selectedProject.features.map((feature, idx) => (
@@ -151,7 +172,7 @@ const Projects = ({ translations, projects, language }) => {
                 {/* Technologies */}
                 <div className="mb-6">
                   <h4 className="text-xl font-semibold text-cyan-400 mb-3">
-                    {translations.projects.technologies}
+                    {technologiesLabel}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
@@ -177,7 +198,7 @@ const Projects = ({ translations, projects, language }) => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/30"
                     >
-                      {language === 'es' ? 'Ver en App Store' : 'View on App Store'}
+                      {viewButtonLabel}
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   )}

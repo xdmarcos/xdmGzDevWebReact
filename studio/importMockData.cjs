@@ -113,6 +113,26 @@ const personalInfo = {
   ]
 }
 
+const projectsSection = {
+  _type: 'projectsSection',
+  
+  // Section Title
+  title: "Featured Projects",
+  titleEs: "Proyectos Destacados",
+  
+  // Section Subtitle
+  subtitle: "Showcasing my expertise in iOS development through innovative mobile applications",
+  subtitleEs: "Mostrando mi experiencia en desarrollo iOS a través de aplicaciones móviles innovadoras",
+  
+  // Labels for project modal
+  featuresLabel: "Key Features",
+  featuresLabelEs: "Características Clave",
+  technologiesLabel: "Technologies",
+  technologiesLabelEs: "Tecnologías",
+  viewButtonLabel: "View on App Store",
+  viewButtonLabelEs: "Ver en App Store"
+}
+
 const contactInfo = {
   _type: 'contactInfo',
   
@@ -455,7 +475,7 @@ async function deleteExistingData() {
   
   try {
     // Delete existing documents of each type
-    const types = ['personalInfo', 'contactInfo', 'skill', 'project']
+    const types = ['personalInfo', 'contactInfo', 'projectsSection', 'skill', 'project']
     
     for (const type of types) {
       const docs = await client.fetch(`*[_type == "${type}"]._id`)
@@ -526,7 +546,21 @@ async function importData() {
     }
     console.log('')
 
-    // 4. Import Projects
+    // 4. Import Projects Section Config
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+    console.log('📂 PROJECTS SECTION CONFIGURATION')
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+    const projectsSectionDoc = await client.create(projectsSection)
+    console.log(`   ✅ Title (EN): ${projectsSection.title}`)
+    console.log(`   ✅ Title (ES): ${projectsSection.titleEs}`)
+    console.log(`   ✅ Subtitle (EN): ${projectsSection.subtitle.substring(0, 50)}...`)
+    console.log(`   ✅ Subtitle (ES): ${projectsSection.subtitleEs.substring(0, 50)}...`)
+    console.log(`   ✅ Features Label: EN/ES`)
+    console.log(`   ✅ Technologies Label: EN/ES`)
+    console.log(`   ✅ View Button Label: EN/ES`)
+    console.log(`   📌 Document ID: ${projectsSectionDoc._id}\n`)
+
+    // 5. Import Projects
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
     console.log('💼 PROJECTS (6 items with bilingual content)')
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -552,6 +586,7 @@ async function importData() {
     console.log('📊 SUMMARY:')
     console.log('   ✅ 1 Personal Information (fully bilingual)')
     console.log('   ✅ 1 Contact Information (fully bilingual)')
+    console.log('   ✅ 1 Projects Section Configuration (fully bilingual)')
     console.log(`   ✅ ${skills.length} Skills (with bilingual descriptions)`)
     console.log(`   ✅ ${projects.length} Projects (fully bilingual)\n`)
     
