@@ -48,14 +48,18 @@ const Portfolio = () => {
           client.fetch(projectsQuery)
         ]);
 
-        // Transform projects to include image URLs
+        // Transform projects to include image URLs and all bilingual fields
         const transformedProjects = projectsData.map((project, index) => ({
           id: project._id || index + 1,
           title: project.title,
           description: project.description,
-          features: project.features,
-          technologies: project.technologies,
+          descriptionEs: project.descriptionEs,
+          features: project.features || [],
+          featuresEs: project.featuresEs || [],
+          technologies: project.technologies || [],
           metrics: project.metrics,
+          metricsEs: project.metricsEs,
+          projectUrl: project.projectUrl,
           image: project.image ? urlFor(project.image).width(800).quality(80).url() : null
         }));
 
