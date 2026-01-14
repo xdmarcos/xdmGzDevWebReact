@@ -5,9 +5,9 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 import Navigation from './Navigation';
-import { translations, personalInfo as mockPersonalInfo, contactInfo as mockContactInfo, skills as mockSkills, projects as mockProjects } from '../mock';
+import { translations, personalInfo as mockPersonalInfo, contactInfo as mockContactInfo, skills as mockSkills, projects as mockProjects, projectsSection as mockProjectsSection } from '../mock';
 import { client, urlFor } from '../sanity/client';
-import { personalInfoQuery, contactInfoQuery, skillsQuery, projectsQuery } from '../sanity/queries';
+import { personalInfoQuery, contactInfoQuery, skillsQuery, projectsQuery, projectsSectionQuery } from '../sanity/queries';
 
 const Portfolio = () => {
   const [language, setLanguage] = useState('en');
@@ -20,6 +20,7 @@ const Portfolio = () => {
   const [contactInfo, setContactInfo] = useState(mockContactInfo);
   const [skills, setSkills] = useState(mockSkills);
   const [projects, setProjects] = useState(mockProjects);
+  const [projectsSection, setProjectsSection] = useState(mockProjectsSection);
 
   useEffect(() => {
     const handleScroll = () => {
