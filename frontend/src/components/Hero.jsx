@@ -70,7 +70,7 @@ const Hero = ({ translations, personalInfo, language }) => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('contact')}
-              className="border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105"
+              className="border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-white px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105"
             >
               {translations.hero.cta2}
             </Button>
