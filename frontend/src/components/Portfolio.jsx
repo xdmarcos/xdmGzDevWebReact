@@ -5,9 +5,9 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 import Navigation from './Navigation';
-import { translations, personalInfo as mockPersonalInfo, contactInfo as mockContactInfo, skills as mockSkills, projects as mockProjects } from '../mock';
+import { translations, personalInfo as mockPersonalInfo, contactInfo as mockContactInfo, skills as mockSkills, projects as mockProjects, projectsSection as mockProjectsSection } from '../mock';
 import { client, urlFor } from '../sanity/client';
-import { personalInfoQuery, contactInfoQuery, skillsQuery, projectsQuery } from '../sanity/queries';
+import { personalInfoQuery, contactInfoQuery, skillsQuery, projectsQuery, projectsSectionQuery } from '../sanity/queries';
 
 const Portfolio = () => {
   const [language, setLanguage] = useState('en');
@@ -20,6 +20,7 @@ const Portfolio = () => {
   const [contactInfo, setContactInfo] = useState(mockContactInfo);
   const [skills, setSkills] = useState(mockSkills);
   const [projects, setProjects] = useState(mockProjects);
+  const [projectsSection, setProjectsSection] = useState(mockProjectsSection);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +42,12 @@ const Portfolio = () => {
         setLoading(true);
         console.log('Fetching data from Sanity...');
         
-        const [personalData, contactData, skillsData, projectsData] = await Promise.all([
+        const [personalData, contactData, skillsData, projectsData, projectsSectionData] = await Promise.all([
           client.fetch(personalInfoQuery),
           client.fetch(contactInfoQuery),
           client.fetch(skillsQuery),
-          client.fetch(projectsQuery)
+          client.fetch(projectsQuery),
+          client.fetch(projectsSectionQuery)
         ]);
 
         // Transform projects to include image URLs and all bilingual fields
@@ -67,6 +69,7 @@ const Portfolio = () => {
         if (contactData) setContactInfo(contactData);
         if (skillsData.length > 0) setSkills(skillsData);
         if (transformedProjects.length > 0) setProjects(transformedProjects);
+        if (projectsSectionData) setProjectsSection(projectsSectionData);
         
         console.log('Sanity data loaded successfully');
         setLoading(false);
@@ -104,7 +107,7 @@ const Portfolio = () => {
       <Hero translations={t} personalInfo={personalInfo} language={language} />
       <About translations={t} personalInfo={personalInfo} language={language} />
       <Skills translations={t} skills={skills} language={language} />
-      <Projects translations={t} projects={projects} language={language} />
+      <Projects translations={t} projects={projects} projectsSection={projectsSection} language={language} />
       <Contact translations={t} contactInfo={contactInfo} personalInfo={personalInfo} language={language} />
     </div>
   );

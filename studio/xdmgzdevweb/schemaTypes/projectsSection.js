@@ -1,0 +1,81 @@
+export default {
+  name: 'projectsSection',
+  title: 'Projects Section',
+  type: 'document',
+  fields: [
+    {
+      name: 'title',
+      title: 'Section Title (English)',
+      type: 'string',
+      description: 'e.g., "Featured Projects"',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'titleEs',
+      title: 'Section Title (Spanish)',
+      type: 'string',
+      description: 'e.g., "Proyectos Destacados"',
+    },
+    {
+      name: 'subtitle',
+      title: 'Section Subtitle (English)',
+      type: 'text',
+      description: 'Brief description below the title',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'subtitleEs',
+      title: 'Section Subtitle (Spanish)',
+      type: 'text',
+      description: 'Spanish version of subtitle',
+    },
+    {
+      name: 'featuresLabel',
+      title: 'Features Label (English)',
+      type: 'string',
+      description: 'Label for features section in project modal, e.g., "Key Features"',
+      initialValue: 'Key Features',
+    },
+    {
+      name: 'featuresLabelEs',
+      title: 'Features Label (Spanish)',
+      type: 'string',
+      description: 'e.g., "Características Clave"',
+      initialValue: 'Características Clave',
+    },
+    {
+      name: 'technologiesLabel',
+      title: 'Technologies Label (English)',
+      type: 'string',
+      description: 'Label for technologies section in project modal, e.g., "Technologies"',
+      initialValue: 'Technologies',
+    },
+    {
+      name: 'technologiesLabelEs',
+      title: 'Technologies Label (Spanish)',
+      type: 'string',
+      description: 'e.g., "Tecnologías"',
+      initialValue: 'Tecnologías',
+    },
+    {
+      name: 'viewButtonLabel',
+      title: 'View Button Label (English)',
+      type: 'string',
+      description: 'Label for the external link button, e.g., "View on App Store"',
+      initialValue: 'View on App Store',
+    },
+    {
+      name: 'viewButtonLabelEs',
+      title: 'View Button Label (Spanish)',
+      type: 'string',
+      description: 'e.g., "Ver en App Store"',
+      initialValue: 'Ver en App Store',
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+  },
+}
