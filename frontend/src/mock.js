@@ -61,7 +61,7 @@ export const contactInfo = {
     "Optimización para App Store",
     "Consultoría técnica"
   ],
-  formEndpoint: "", // Will be configured for deployment
+  formEndpoint: "https://api.web3forms.com/submit",
   email: "xdmgzdev@gmail.com",
   github: "github.com/xdmgzdev",
   linkedin: "linkedin.com/in/xdmgzdev"

@@ -6,8 +6,8 @@ import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
-// Web3Forms API endpoint
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+// Default Web3Forms API endpoint
+const DEFAULT_FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
 const Contact = ({ translations, contactInfo, personalInfo, language }) => {
   const { toast } = useToast();
@@ -34,6 +34,9 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
   const contactEmail = contactInfo?.email || personalInfo?.email;
   const contactGithub = contactInfo?.github || personalInfo?.github;
   const contactLinkedin = contactInfo?.linkedin || personalInfo?.linkedin;
+  
+  // Form endpoint: prioritize Sanity config, then env var, then default
+  const formEndpoint = contactInfo?.formEndpoint || process.env.REACT_APP_FORM_ENDPOINT || DEFAULT_FORM_ENDPOINT;
 
   const handleChange = (e) => {
     setFormData({
@@ -63,7 +66,7 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     }
 
     try {
-      const response = await fetch(WEB3FORMS_ENDPOINT, {
+      const response = await fetch(formEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
