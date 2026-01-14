@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'iOS Developer Portfolio',
 
-  projectId: 'YOUR_PROJECT_ID',
+  projectId: 'tj58vz34',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
