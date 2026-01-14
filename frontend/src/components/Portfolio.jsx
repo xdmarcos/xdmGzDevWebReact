@@ -42,11 +42,12 @@ const Portfolio = () => {
         setLoading(true);
         console.log('Fetching data from Sanity...');
         
-        const [personalData, contactData, skillsData, projectsData] = await Promise.all([
+        const [personalData, contactData, skillsData, projectsData, projectsSectionData] = await Promise.all([
           client.fetch(personalInfoQuery),
           client.fetch(contactInfoQuery),
           client.fetch(skillsQuery),
-          client.fetch(projectsQuery)
+          client.fetch(projectsQuery),
+          client.fetch(projectsSectionQuery)
         ]);
 
         // Transform projects to include image URLs and all bilingual fields
@@ -68,6 +69,7 @@ const Portfolio = () => {
         if (contactData) setContactInfo(contactData);
         if (skillsData.length > 0) setSkills(skillsData);
         if (transformedProjects.length > 0) setProjects(transformedProjects);
+        if (projectsSectionData) setProjectsSection(projectsSectionData);
         
         console.log('Sanity data loaded successfully');
         setLoading(false);
