@@ -140,8 +140,8 @@ const contactInfo = {
     "Consultoría técnica"
   ],
   
-  // Form endpoint (will be configured later)
-  formEndpoint: "",
+  // Form endpoint - Web3Forms API
+  formEndpoint: "https://api.web3forms.com/submit",
   
   // Contact links
   email: "xdmgzdev@gmail.com",
