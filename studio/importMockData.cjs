@@ -475,7 +475,7 @@ async function deleteExistingData() {
   
   try {
     // Delete existing documents of each type
-    const types = ['personalInfo', 'contactInfo', 'skill', 'project']
+    const types = ['personalInfo', 'contactInfo', 'projectsSection', 'skill', 'project']
     
     for (const type of types) {
       const docs = await client.fetch(`*[_type == "${type}"]._id`)
