@@ -6,6 +6,9 @@ import { Textarea } from './ui/textarea';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
+// Web3Forms API endpoint
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
 const Contact = ({ translations, contactInfo, personalInfo, language }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -39,19 +42,68 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
     });
   };
 
-  const handleFormSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    // Show success message after form submits to iframe
-    setTimeout(() => {
+
+    // Get access key from environment variable
+    const accessKey = process.env.REACT_APP_WEB3FORMS_KEY;
+
+    if (!accessKey) {
+      console.error('Web3Forms access key not configured');
       toast({
-        title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
+        title: language === 'es' ? "Error de configuración" : "Configuration error",
         description: language === 'es' 
-          ? "Gracias por contactarme. Te responderé pronto."
-          : "Thank you for reaching out. I'll get back to you soon.",
+          ? "El formulario no está configurado correctamente."
+          : "Form is not configured properly.",
+        variant: "destructive",
       });
-      setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
-    }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact from ${formData.name}`,
+          from_name: 'xdmGzDev Portfolio'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: language === 'es' ? "¡Mensaje enviado!" : "Message sent successfully!",
+          description: language === 'es' 
+            ? "Gracias por contactarme. Te responderé pronto."
+            : "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: language === 'es' ? "Error al enviar" : "Failed to send",
+        description: language === 'es'
+          ? `Por favor intenta de nuevo o contáctame en ${contactEmail}`
+          : `Please try again or contact me at ${contactEmail}`,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -142,27 +194,7 @@ const Contact = ({ translations, contactInfo, personalInfo, language }) => {
           {/* Contact Form */}
           <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm">
             <CardContent className="p-8">
-              {/* Hidden iframe for form submission - bypasses CORS */}
-              <iframe 
-                name="web3forms-iframe" 
-                id="web3forms-iframe" 
-                style={{ display: 'none' }} 
-                title="form-target"
-              />
-              
-              {/* Native HTML form - most reliable method */}
-              <form 
-                action="https://api.web3forms.com/submit" 
-                method="POST"
-                target="web3forms-iframe"
-                onSubmit={handleFormSubmit}
-                className="space-y-6"
-              >
-                {/* Web3Forms configuration */}
-                <input type="hidden" name="access_key" value="c94f9c2e-c22e-40e5-9fd3-6725511be632" />
-                <input type="hidden" name="subject" value="Portfolio Contact Form Submission" />
-                <input type="hidden" name="from_name" value="xdmGzDev Portfolio" />
-                
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-slate-300 font-medium mb-2">
                     {translations.contact.form.name}
