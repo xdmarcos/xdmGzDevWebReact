@@ -157,7 +157,7 @@ const Projects = ({ translations, projects, projectsSection, language }) => {
                 {/* Features */}
                 <div className="mb-6">
                   <h4 className="text-xl font-semibold text-cyan-400 mb-3">
-                    {translations.projects.features}
+                    {featuresLabel}
                   </h4>
                   <ul className="space-y-2">
                     {selectedProject.features.map((feature, idx) => (
@@ -172,7 +172,7 @@ const Projects = ({ translations, projects, projectsSection, language }) => {
                 {/* Technologies */}
                 <div className="mb-6">
                   <h4 className="text-xl font-semibold text-cyan-400 mb-3">
-                    {translations.projects.technologies}
+                    {technologiesLabel}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
@@ -198,7 +198,7 @@ const Projects = ({ translations, projects, projectsSection, language }) => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/30"
                     >
-                      {language === 'es' ? 'Ver en App Store' : 'View on App Store'}
+                      {viewButtonLabel}
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
