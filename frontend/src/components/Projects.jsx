@@ -3,8 +3,29 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Badge } from './ui/badge';
 import { ExternalLink, Code } from 'lucide-react';
 
-const Projects = ({ translations, projects, language }) => {
+const Projects = ({ translations, projects, projectsSection, language }) => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Get section content from projectsSection or fallback to translations
+  const sectionTitle = language === 'es' && projectsSection?.titleEs 
+    ? projectsSection.titleEs 
+    : (projectsSection?.title || translations.projects.title);
+  
+  const sectionSubtitle = language === 'es' && projectsSection?.subtitleEs 
+    ? projectsSection.subtitleEs 
+    : (projectsSection?.subtitle || translations.projects.subtitle);
+  
+  const featuresLabel = language === 'es' && projectsSection?.featuresLabelEs 
+    ? projectsSection.featuresLabelEs 
+    : (projectsSection?.featuresLabel || translations.projects.features);
+  
+  const technologiesLabel = language === 'es' && projectsSection?.technologiesLabelEs 
+    ? projectsSection.technologiesLabelEs 
+    : (projectsSection?.technologiesLabel || translations.projects.technologies);
+  
+  const viewButtonLabel = language === 'es' && projectsSection?.viewButtonLabelEs 
+    ? projectsSection.viewButtonLabelEs 
+    : (projectsSection?.viewButtonLabel || (language === 'es' ? 'Ver en App Store' : 'View on App Store'));
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -12,10 +33,10 @@ const Projects = ({ translations, projects, language }) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
-            {translations.projects.title}
+            {sectionTitle}
           </h2>
           <p className="text-slate-400 text-lg max-w-3xl mx-auto">
-            {translations.projects.subtitle}
+            {sectionSubtitle}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4" />
         </div>
