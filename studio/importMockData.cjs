@@ -113,6 +113,26 @@ const personalInfo = {
   ]
 }
 
+const projectsSection = {
+  _type: 'projectsSection',
+  
+  // Section Title
+  title: "Featured Projects",
+  titleEs: "Proyectos Destacados",
+  
+  // Section Subtitle
+  subtitle: "Showcasing my expertise in iOS development through innovative mobile applications",
+  subtitleEs: "Mostrando mi experiencia en desarrollo iOS a través de aplicaciones móviles innovadoras",
+  
+  // Labels for project modal
+  featuresLabel: "Key Features",
+  featuresLabelEs: "Características Clave",
+  technologiesLabel: "Technologies",
+  technologiesLabelEs: "Tecnologías",
+  viewButtonLabel: "View on App Store",
+  viewButtonLabelEs: "Ver en App Store"
+}
+
 const contactInfo = {
   _type: 'contactInfo',
   
